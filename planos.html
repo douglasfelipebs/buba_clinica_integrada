@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Planos de saúde aceitos pela BUBA Clínica Integrada.">
+    <title>Planos de Saúde - BUBA Clínica Integrada</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="images/logo/logo.png" alt="BUBA Clínica Integrada" onerror="this.style.display='none'">
+                    <div class="logo-text">
+                        <span class="logo-name">BUBA</span>
+                        <span class="logo-tagline">Clínica Integrada</span>
+                    </div>
+                </a>
+                
+                <nav class="nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="medicos.html">Médicos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="planos.html" class="active">Planos</a></li>
+                        <li><a href="historia.html">História</a></li>
+                        <li><a href="avaliacoes.html">Avaliações</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                    <button class="menu-toggle" aria-label="Menu">☰</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="padding: var(--spacing-xl) 0;">
+        <div class="container">
+            <h1 class="section-title" style="margin-bottom: 0;">Planos de Saúde Aceitos</h1>
+            <p class="text-center" style="margin-top: var(--spacing-sm); font-size: var(--font-size-lg);">
+                Atendemos diversos planos de saúde e também pacientes particulares
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div id="insurance-container">
+                <div class="loading">Carregando informações dos planos...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background-color: var(--color-bg-secondary);">
+        <div class="container">
+            <div class="text-center fade-in" style="max-width: 800px; margin: 0 auto;">
+                <h2>Consulta com Plano de Saúde</h2>
+                <p style="font-size: var(--font-size-lg); line-height: 1.8; margin-top: var(--spacing-md);">
+                    Para agendar uma consulta utilizando seu plano de saúde, entre em contato 
+                    conosco para verificar a disponibilidade e confirmar a cobertura do seu plano. 
+                    Também atendemos pacientes particulares.
+                </p>
+                <div style="margin-top: var(--spacing-lg);">
+                    <a href="contato.html" class="btn btn-primary">Entre em Contato</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BUBA Clínica Integrada</h4>
+                    <p>Medicina • Odontologia • Estética</p>
+                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-sm);">
+                        Cuidado completo para você e sua família em Itaiópolis.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="medicos.html">Médicos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="planos.html">Planos</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Itaiópolis - PR</p>
+                    <p style="margin-top: var(--spacing-xs);">
+                        <a href="contato.html">Ver informações completas</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 BUBA Clínica Integrada. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Carrega e renderiza planos de saúde
+        async function loadInsurance() {
+            try {
+                const response = await fetch('data/insurance.json');
+                const data = await response.json();
+                const insurance = data.insurance;
+                
+                const container = document.getElementById('insurance-container');
+                
+                // Agrupa por categoria
+                const grouped = {
+                    premium: insurance.filter(i => i.category === 'premium'),
+                    intermediário: insurance.filter(i => i.category === 'intermediário'),
+                    básico: insurance.filter(i => i.category === 'básico')
+                };
+                
+                const categoryNames = {
+                    premium: 'Planos Premium',
+                    intermediário: 'Planos Intermediários',
+                    básico: 'Outras Formas de Pagamento'
+                };
+                
+                let html = '';
+                
+                ['premium', 'intermediário', 'básico'].forEach(category => {
+                    if (grouped[category].length > 0) {
+                        html += `<div class="fade-in" style="margin-bottom: var(--spacing-xl);">`;
+                        html += `<h2 class="section-title" style="font-size: var(--font-size-2xl); margin-bottom: var(--spacing-md);">${categoryNames[category]}</h2>`;
+                        html += `<div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">`;
+                        
+                        grouped[category].forEach(plan => {
+                            html += `
+                                <div class="card fade-in" style="text-align: center; padding: var(--spacing-md);">
+                                    <h3 class="card-title" style="font-size: var(--font-size-lg); margin-bottom: 0;">${plan.name}</h3>
+                                </div>
+                            `;
+                        });
+                        
+                        html += `</div></div>`;
+                    }
+                });
+                
+                container.innerHTML = html;
+                
+                // Animação fade-in
+                setTimeout(() => {
+                    document.querySelectorAll('#insurance-container .fade-in').forEach(el => {
+                        const observer = new IntersectionObserver(function(entries) {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.classList.add('visible');
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.1 });
+                        observer.observe(el);
+                    });
+                }, 100);
+                
+            } catch (error) {
+                console.error('Erro ao carregar planos:', error);
+                document.getElementById('insurance-container').innerHTML = 
+                    '<div class="loading">Erro ao carregar informações dos planos. Por favor, tente novamente mais tarde.</div>';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadInsurance);
+    </script>
+</body>
+</html>
+

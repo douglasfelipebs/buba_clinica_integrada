@@ -1,0 +1,53 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Maria Silva",
+      "area": "odontologica",
+      "rating": 5,
+      "text": "Excelente atendimento! O Dr. Lucas é muito atencioso e profissional. O tratamento foi feito com muito cuidado e carinho.",
+      "photo": ""
+    },
+    {
+      "id": 2,
+      "name": "João Santos",
+      "area": "medica",
+      "rating": 5,
+      "text": "A Dra. Beatriz transformou minha saúde. A abordagem integrativa fez toda a diferença no meu tratamento. Recomendo muito!",
+      "photo": ""
+    },
+    {
+      "id": 3,
+      "name": "Ana Costa",
+      "area": "odontologica",
+      "rating": 5,
+      "text": "Fiz cirurgia de siso com a Dra. Jessyca e foi perfeito! Sem dor, recuperação rápida. Equipe muito preparada.",
+      "photo": ""
+    },
+    {
+      "id": 4,
+      "name": "Pedro Oliveira",
+      "area": "odontologica",
+      "rating": 5,
+      "text": "Implante dentário realizado com sucesso. Profissionais de alto nível e ambiente muito acolhedor.",
+      "photo": ""
+    },
+    {
+      "id": 5,
+      "name": "Carla Mendes",
+      "area": "estetica",
+      "rating": 5,
+      "text": "Tratamentos estéticos de excelência! Resultados naturais e profissionais muito competentes.",
+      "photo": ""
+    },
+    {
+      "id": 6,
+      "name": "Roberto Alves",
+      "area": "medica",
+      "rating": 5,
+      "text": "Medicina funcional que realmente funciona! Saí da clínica entendendo melhor meu corpo e minha saúde.",
+      "photo": ""
+    }
+  ]
+}
+

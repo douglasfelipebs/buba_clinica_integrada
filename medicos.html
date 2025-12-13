@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça nossa equipe de profissionais: médicos, dentistas e especialistas em estética da BUBA Clínica Integrada.">
+    <title>Nossa Equipe - BUBA Clínica Integrada</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <img src="images/logo/logo.png" alt="BUBA Clínica Integrada" onerror="this.style.display='none'">
+                    <div class="logo-text">
+                        <span class="logo-name">BUBA</span>
+                        <span class="logo-tagline">Clínica Integrada</span>
+                    </div>
+                </a>
+                
+                <nav class="nav">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="medicos.html" class="active">Médicos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="planos.html">Planos</a></li>
+                        <li><a href="historia.html">História</a></li>
+                        <li><a href="avaliacoes.html">Avaliações</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                    <button class="menu-toggle" aria-label="Menu">☰</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="padding: var(--spacing-xl) 0;">
+        <div class="container">
+            <h1 class="section-title" style="margin-bottom: 0;">Nossa Equipe</h1>
+            <p class="text-center" style="margin-top: var(--spacing-sm); font-size: var(--font-size-lg);">
+                Profissionais dedicados ao seu bem-estar
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="medica">Área Médica</button>
+                <button class="filter-btn" data-filter="odontologica">Área Odontológica</button>
+                <button class="filter-btn" data-filter="estetica">Área Estética</button>
+            </div>
+
+            <div id="doctors-container" class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="loading">Carregando informações dos médicos...</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BUBA Clínica Integrada</h4>
+                    <p>Medicina • Odontologia • Estética</p>
+                    <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-sm);">
+                        Cuidado completo para você e sua família em Itaiópolis.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="medicos.html">Médicos</a></li>
+                        <li><a href="servicos.html">Serviços</a></li>
+                        <li><a href="planos.html">Planos</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Itaiópolis - PR</p>
+                    <p style="margin-top: var(--spacing-xs);">
+                        <a href="contato.html">Ver informações completas</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 BUBA Clínica Integrada. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/doctors.js"></script>
+</body>
+</html>
+
