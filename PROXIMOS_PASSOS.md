@@ -17,11 +17,11 @@
 ## 🚨 Prioridade Alta - Essencial para o Site Funcionar
 
 ### 1. Logo da Clínica
-- [ ] **Ação:** Adicionar arquivo da logo
-- [ ] **Localização:** `images/logo/logo.png`
-- [ ] **Formato:** PNG com fundo transparente (recomendado)
-- [ ] **Tamanho sugerido:** Mínimo 200x200px
-- [ ] **Status:** ⚠️ Sem a logo, o header mostrará apenas o texto "BUBA Clínica Integrada"
+- [x] **Ação:** Adicionar arquivo da logo
+- [x] **Localização:** `images/logo/logo.jpeg`
+- [x] **Formato:** PNG com fundo transparente (recomendado)
+- [x] **Tamanho sugerido:** Mínimo 200x200px
+- [x] **Status:** ⚠️ Sem a logo, o header mostrará apenas o texto "BUBA Clínica Integrada"
 
 ### 2. Informações de Contato Completas
 - [ ] **Arquivo:** `contato.html`

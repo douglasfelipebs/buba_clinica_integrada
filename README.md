@@ -52,7 +52,7 @@ O site foi desenvolvido seguindo a identidade visual da clínica:
 
 ### Adicionar Logo
 
-1. Adicione o arquivo da logo em `images/logo/logo.png`
+1. Adicione o arquivo da logo em `images/logo/logo.jpeg`
 2. O logo será exibido automaticamente no header de todas as páginas
 
 ### Atualizar Informações dos Médicos
@@ -192,7 +192,7 @@ O site é totalmente responsivo e otimizado para:
 ## 📝 Notas Importantes
 
 1. **Sem informações sensíveis:** Não inclua informações sensíveis no código, pois o repositório é público
-2. **Logo:** Adicione a logo em `images/logo/logo.png` para que seja exibida
+2. **Logo:** Adicione a logo em `images/logo/logo.jpeg` para que seja exibida
 3. **Fotos:** As fotos dos médicos devem ser adicionadas manualmente em `images/doctors/`
 4. **Google Maps:** Atualize o iframe do mapa com o endereço real da clínica
 5. **Telefones:** Os telefones já estão parcialmente preenchidos baseados nas imagens fornecidas
