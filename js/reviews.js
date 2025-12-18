@@ -2,6 +2,61 @@
    BUBA Clínica Integrada - JavaScript Avaliações
    ======================================== */
 
+// Dados das avaliações - editados diretamente neste arquivo
+// Para atualizar, edite os dados abaixo na constante reviewsData
+const reviewsData = {
+  "reviews": [
+    {
+      "id": 1,
+      "name": "Maria Silva",
+      "area": "odontologica",
+      "rating": 5,
+      "text": "Excelente atendimento! O Dr. Lucas é muito atencioso e profissional. O tratamento foi feito com muito cuidado e carinho.",
+      "photo": ""
+    },
+    {
+      "id": 2,
+      "name": "João Santos",
+      "area": "medica",
+      "rating": 5,
+      "text": "A Dra. Beatriz transformou minha saúde. A abordagem integrativa fez toda a diferença no meu tratamento. Recomendo muito!",
+      "photo": ""
+    },
+    {
+      "id": 3,
+      "name": "Ana Costa",
+      "area": "odontologica",
+      "rating": 5,
+      "text": "Fiz cirurgia de siso com a Dra. Jessyca e foi perfeito! Sem dor, recuperação rápida. Equipe muito preparada.",
+      "photo": ""
+    },
+    {
+      "id": 4,
+      "name": "Pedro Oliveira",
+      "area": "odontologica",
+      "rating": 5,
+      "text": "Implante dentário realizado com sucesso. Profissionais de alto nível e ambiente muito acolhedor.",
+      "photo": ""
+    },
+    {
+      "id": 5,
+      "name": "Carla Mendes",
+      "area": "estetica",
+      "rating": 5,
+      "text": "Tratamentos estéticos de excelência! Resultados naturais e profissionais muito competentes.",
+      "photo": ""
+    },
+    {
+      "id": 6,
+      "name": "Roberto Alves",
+      "area": "medica",
+      "rating": 5,
+      "text": "Medicina funcional que realmente funciona! Saí da clínica entendendo melhor meu corpo e minha saúde.",
+      "photo": ""
+    }
+  ]
+};
+
 let allReviews = [];
 let filteredReviews = [];
 
@@ -17,22 +72,32 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ========================================
-// Carrega dados das avaliações do JSON
+// Carrega dados das avaliações (diretamente do objeto JavaScript)
 // ========================================
-async function loadReviews() {
+function loadReviews() {
+    const container = document.getElementById('reviews-container');
+    
+    if (!container) {
+        console.error('Container #reviews-container não encontrado!');
+        return;
+    }
+    
     try {
-        const response = await fetch('data/reviews.json');
-        const data = await response.json();
-        allReviews = data.reviews;
+        if (!reviewsData.reviews || !Array.isArray(reviewsData.reviews)) {
+            throw new Error('Formato inválido dos dados: propriedade reviews não encontrada ou não é array');
+        }
+        
+        allReviews = reviewsData.reviews;
         filteredReviews = [...allReviews];
+        
+        console.log('Avaliações carregadas:', allReviews.length);
         
         renderReviews(filteredReviews);
     } catch (error) {
         console.error('Erro ao carregar avaliações:', error);
-        const container = document.getElementById('reviews-container');
         if (container) {
             container.innerHTML = 
-                '<div class="loading">Erro ao carregar avaliações. Por favor, tente novamente mais tarde.</div>';
+                '<div class="loading">Erro ao carregar avaliações. Por favor, verifique o console do navegador (F12).</div>';
         }
     }
 }

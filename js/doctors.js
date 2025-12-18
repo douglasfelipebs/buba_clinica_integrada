@@ -2,6 +2,49 @@
    BUBA Clínica Integrada - JavaScript Médicos
    ======================================== */
 
+// Dados dos médicos - editados diretamente neste arquivo
+// Para atualizar, edite os dados abaixo na constante doctorsData
+const doctorsData = {
+  "doctors": [
+    {
+      "id": 1,
+      "name": "Dr. Lucas G. Buba",
+      "specialty": "Cirurgião Dentista",
+      "area": "odontologica",
+      "conselhoDeClasse": "CRO PR-XXXXX",
+      "photo": "images/doctors/lucas-buba.jpg",
+      "description": "Especialista em cirurgia oral, implantes dentários e tratamentos estéticos odontológicos. Dedicado a proporcionar o melhor cuidado e resultados aos pacientes."
+    },
+    {
+      "id": 2,
+      "name": "Dra. Beatriz Boldori",
+      "specialty": "Médica Integrativa",
+      "area": "medica",
+      "conselhoDeClasse": "CRM PR-XXXXX",
+      "photo": "images/doctors/beatriz-boldori.jpg",
+      "description": "Médica especializada em medicina funcional e integrativa, focada em tratamentos personalizados que consideram o paciente como um todo. Também atende na área de saúde capilar."
+    },
+    {
+      "id": 3,
+      "name": "Dra. Jessyca Buba",
+      "specialty": "Cirurgiã Dentista",
+      "area": "odontologica",
+      "conselhoDeClasse": "CRO PR-XXXXX",
+      "photo": "images/doctors/jessyca-buba.jpg",
+      "description": "Especialista em cirurgia de terceiros molares (sisos), implantes dentários e tratamento para bruxismo. Comprometida com o bem-estar e conforto dos pacientes."
+    },
+    {
+      "id": 4,
+      "name": "Dr. Exemplo Estético",
+      "specialty": "Especialista em Estética",
+      "area": "estetica",
+      "conselhoDeClasse": "CRM PR-XXXXX",
+      "photo": "images/doctors/exemplo-estetica.jpg",
+      "description": "Profissional especializado em tratamentos estéticos não-invasivos e procedimentos de beleza. Exemplo de template que pode ser substituído por profissional real."
+    }
+  ]
+};
+
 let allDoctors = [];
 let filteredDoctors = [];
 
@@ -17,20 +60,39 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ========================================
-// Carrega dados dos médicos do JSON
+// Carrega dados dos médicos (diretamente do objeto JavaScript)
 // ========================================
-async function loadDoctors() {
+function loadDoctors() {
+    const container = document.getElementById('doctors-container');
+    
+    if (!container) {
+        console.error('Container #doctors-container não encontrado!');
+        return;
+    }
+    
     try {
-        const response = await fetch('data/doctors.json');
-        const data = await response.json();
-        allDoctors = data.doctors;
+        if (!doctorsData.doctors || !Array.isArray(doctorsData.doctors)) {
+            throw new Error('Formato inválido dos dados: propriedade doctors não encontrada ou não é array');
+        }
+        
+        allDoctors = doctorsData.doctors;
         filteredDoctors = [...allDoctors];
+        
+        console.log('Médicos carregados:', allDoctors.length);
         
         renderDoctors(filteredDoctors);
     } catch (error) {
         console.error('Erro ao carregar médicos:', error);
-        document.getElementById('doctors-container').innerHTML = 
-            '<div class="loading">Erro ao carregar informações dos médicos. Por favor, tente novamente mais tarde.</div>';
+        console.error('Detalhes do erro:', error.message);
+        
+        if (container) {
+            container.innerHTML = `
+                <div class="loading" style="color: var(--color-text-light); padding: var(--spacing-xl); text-align: center;">
+                    <p style="margin-bottom: var(--spacing-sm);">Erro ao carregar informações dos médicos.</p>
+                    <p style="font-size: var(--font-size-sm);">Por favor, verifique o console do navegador (F12) para mais detalhes.</p>
+                </div>
+            `;
+        }
     }
 }
 
@@ -40,12 +102,17 @@ async function loadDoctors() {
 function renderDoctors(doctors) {
     const container = document.getElementById('doctors-container');
     
-    if (!container) return;
+    if (!container) {
+        console.error('Container #doctors-container não encontrado para renderização!');
+        return;
+    }
     
-    if (doctors.length === 0) {
+    if (!doctors || doctors.length === 0) {
         container.innerHTML = '<div class="loading">Nenhum médico encontrado para esta categoria.</div>';
         return;
     }
+    
+    console.log(`Renderizando ${doctors.length} médico(s)`);
     
     container.innerHTML = doctors.map(doctor => `
         <div class="card doctor-card fade-in">
@@ -84,6 +151,13 @@ function renderDoctors(doctors) {
 function setupFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     
+    if (filterButtons.length === 0) {
+        console.warn('Botões de filtro não encontrados!');
+        return;
+    }
+    
+    console.log('Filtros configurados:', filterButtons.length);
+    
     filterButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             // Remove classe active de todos os botões
@@ -101,6 +175,8 @@ function setupFilters() {
             } else {
                 filteredDoctors = allDoctors.filter(doctor => doctor.area === filter);
             }
+            
+            console.log(`Filtro aplicado: ${filter}, Médicos encontrados: ${filteredDoctors.length}`);
             
             // Renderiza os médicos filtrados
             renderDoctors(filteredDoctors);

@@ -24,26 +24,28 @@
 - [x] **Status:** ⚠️ Sem a logo, o header mostrará apenas o texto "BUBA Clínica Integrada"
 
 ### 2. Informações de Contato Completas
-- [ ] **Arquivo:** `contato.html`
-- [ ] **Ações necessárias:**
-  - [ ] Adicionar endereço completo (rua, número, bairro, CEP)
-  - [ ] Confirmar telefones e adicionar/remover conforme necessário
-  - [ ] Definir horário de funcionamento real
-  - [ ] Atualizar iframe do Google Maps com endereço real
+- [x] **Arquivo:** `contato.html`
+- [x] **Ações necessárias:**
+  - [x] Adicionar endereço completo (rua, número, bairro, CEP)
+  - [x] Confirmar telefones e adicionar/remover conforme necessário
+  - [x] Definir horário de funcionamento real
+  - [x] Atualizar iframe do Google Maps com endereço real
 
-**Telefones atuais (precisam ser confirmados):**
+**Telefone confirmado:**
 - (47) 9 9930-0027
-- (41) 3270-9209
-- (41) 9929-0000
+
+**Endereço completo:**
+- Av. Getúlio Vargas, 945 - Centro, Itaiópolis - SC, 89340-000
+
+**Horário de funcionamento:**
+- Segunda à Sexta: 09h às 19h
+- Sábado e Domingo: Fechado
 
 ### 3. Endereço no Google Maps
-- [ ] **Ação:** Obter código de incorporação do Google Maps
-- [ ] **Como fazer:**
-  1. Acesse [Google Maps](https://www.google.com/maps)
-  2. Busque pelo endereço da clínica
-  3. Clique em "Compartilhar" → "Incorporar um mapa"
-  4. Copie o código iframe
-  5. Substitua em `contato.html` (linha com `<iframe src="..."`)
+- [x] **Ação:** Obter código de incorporação do Google Maps
+- [x] **Status:** Iframe configurado e funcionando corretamente
+- [x] **Endereço configurado:** Av. Getúlio Vargas, 945 - Centro, Itaiópolis - SC, 89340-000
+- [x] **Link direto:** Adicionado link "Ver no Google Maps" abaixo do iframe
 
 ---
 
@@ -71,9 +73,10 @@
   - [ ] Fotos históricas (para página de História)
 
 ### 6. Logo da Clínica para Favicon
-- [ ] **Ação:** Criar favicon
-- [ ] **Localização:** Raiz do projeto como `favicon.ico`
-- [ ] **Como adicionar:** Incluir `<link rel="icon" href="favicon.ico">` no `<head>` de cada HTML
+- [x] **Ação:** Criar favicon
+- [x] **Localização:** Configurado para usar `images/logo/logo.jpeg` como favicon
+- [x] **Status:** Tags de favicon adicionadas em todas as páginas HTML
+- [x] **Nota:** Usando a logo existente como favicon. Pode criar um `favicon.ico` específico no futuro se necessário.
 
 ---
 
@@ -126,13 +129,13 @@
 - [ ] **Arquivo:** `index.html`
 - [ ] **Verificar:** Textos estão adequados ou precisam de ajustes?
 
-### 14. Links de Redes Sociais (Opcional)
-- [ ] **Arquivo:** `contato.html` e `footer` em todas as páginas
-- [ ] **Ação:** Adicionar links para:
-  - [ ] Instagram
-  - [ ] Facebook
-  - [ ] WhatsApp Business
-  - [ ] Outras redes sociais
+### 14. Links de Redes Sociais
+- [x] **Arquivo:** `contato.html` e `footer` em todas as páginas
+- [x] **Ação:** Adicionar links para:
+  - [x] Instagram: https://www.instagram.com/bubaclinicaitaiopolis/
+  - [x] WhatsApp: (47) 9 9930-0027 - Link para https://wa.me/5547999300027
+  - [x] Adicionado botão WhatsApp na página de contato
+  - [x] Ícones de redes sociais no footer de todas as páginas
 
 ### 15. Meta Tags e SEO
 - [ ] **Arquivos:** Todos os HTMLs
@@ -186,9 +189,9 @@
 ## 📊 Resumo por Prioridade
 
 ### 🔴 Crítico (Site não funciona sem isso):
-1. Logo da clínica
-2. Endereço completo e Google Maps
-3. Informações de contato corretas
+1. ✅ Logo da clínica - CONCLUÍDO
+2. ✅ Endereço completo e Google Maps - CONCLUÍDO
+3. ✅ Informações de contato corretas - CONCLUÍDO
 
 ### 🟡 Importante (Site fica incompleto sem isso):
 4. Fotos dos médicos
@@ -224,6 +227,11 @@
 
 ---
 
-**Última atualização:** Site base implementado e funcional
-**Status geral:** 🟡 70% completo - Faltam principalmente conteúdo e imagens
+**Última atualização:** 
+- ✅ Logo adicionada
+- ✅ Informações de contato completas (endereço, telefone, horário)
+- ✅ Google Maps configurado
+- ✅ Favicon configurado
+
+**Status geral:** 🟢 75% completo - Itens críticos concluídos. Faltam principalmente fotos dos médicos e conteúdo adicional
 

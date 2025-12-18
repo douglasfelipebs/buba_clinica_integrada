@@ -6,6 +6,11 @@
     <meta name="description" content="Planos de saúde aceitos pela BUBA Clínica Integrada.">
     <title>Planos de Saúde - BUBA Clínica Integrada</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/logo/logo.jpeg">
+    <link rel="shortcut icon" type="image/jpeg" href="images/logo/logo.jpeg">
+    <link rel="apple-touch-icon" href="images/logo/logo.jpeg">
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -97,10 +102,30 @@
                 
                 <div class="footer-section">
                     <h4>Contato</h4>
-                    <p>Itaiópolis - PR</p>
+                    <p>Itaiópolis - SC</p>
                     <p style="margin-top: var(--spacing-xs);">
                         <a href="contato.html">Ver informações completas</a>
                     </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div style="display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-sm);">
+                        <a href="https://www.instagram.com/bubaclinicaitaiopolis/" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           style="display: inline-block; width: 40px; height: 40px; text-decoration: none;"
+                           aria-label="Instagram">
+                            <img src="images/icons/instagram.png" alt="Instagram" style="width: 40px; height: 40px; object-fit: contain;">
+                        </a>
+                        <a href="https://wa.me/5547999300027?text=Olá,%20gostaria%20de%20mais%20informações" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           style="display: inline-block; width: 40px; height: 40px; text-decoration: none;"
+                           aria-label="WhatsApp">
+                            <img src="images/icons/whatsapp.png" alt="WhatsApp" style="width: 40px; height: 40px; object-fit: contain;">
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -112,14 +137,67 @@
 
     <script src="js/main.js"></script>
     <script>
+        // Dados dos planos de saúde - carregado diretamente
+        const insuranceData = {
+          "insurance": [
+            {
+              "id": 1,
+              "name": "Unimed",
+              "category": "premium"
+            },
+            {
+              "id": 2,
+              "name": "SulAmérica",
+              "category": "premium"
+            },
+            {
+              "id": 3,
+              "name": "Amil",
+              "category": "premium"
+            },
+            {
+              "id": 4,
+              "name": "Bradesco Saúde",
+              "category": "premium"
+            },
+            {
+              "id": 5,
+              "name": "Particular",
+              "category": "básico"
+            },
+            {
+              "id": 6,
+              "name": "Golden Cross",
+              "category": "intermediário"
+            },
+            {
+              "id": 7,
+              "name": "NotreDame Intermédica",
+              "category": "premium"
+            },
+            {
+              "id": 8,
+              "name": "Haplivida",
+              "category": "intermediário"
+            },
+            {
+              "id": 9,
+              "name": "Prevent Senior",
+              "category": "intermediário"
+            }
+          ]
+        };
+        
         // Carrega e renderiza planos de saúde
-        async function loadInsurance() {
+        function loadInsurance() {
             try {
-                const response = await fetch('data/insurance.json');
-                const data = await response.json();
-                const insurance = data.insurance;
-                
+                const insurance = insuranceData.insurance;
                 const container = document.getElementById('insurance-container');
+                
+                if (!container) {
+                    console.error('Container #insurance-container não encontrado!');
+                    return;
+                }
                 
                 // Agrupa por categoria
                 const grouped = {
@@ -173,8 +251,11 @@
                 
             } catch (error) {
                 console.error('Erro ao carregar planos:', error);
-                document.getElementById('insurance-container').innerHTML = 
-                    '<div class="loading">Erro ao carregar informações dos planos. Por favor, tente novamente mais tarde.</div>';
+                const container = document.getElementById('insurance-container');
+                if (container) {
+                    container.innerHTML = 
+                        '<div class="loading">Erro ao carregar informações dos planos. Por favor, verifique o console do navegador (F12).</div>';
+                }
             }
         }
         

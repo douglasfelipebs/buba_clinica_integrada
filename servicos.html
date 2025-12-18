@@ -6,6 +6,11 @@
     <meta name="description" content="Serviços oferecidos pela BUBA Clínica Integrada: medicina, odontologia e estética.">
     <title>Serviços - BUBA Clínica Integrada</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="images/logo/logo.jpeg">
+    <link rel="shortcut icon" type="image/jpeg" href="images/logo/logo.jpeg">
+    <link rel="apple-touch-icon" href="images/logo/logo.jpeg">
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -93,10 +98,30 @@
                 
                 <div class="footer-section">
                     <h4>Contato</h4>
-                    <p>Itaiópolis - PR</p>
+                    <p>Itaiópolis - SC</p>
                     <p style="margin-top: var(--spacing-xs);">
                         <a href="contato.html">Ver informações completas</a>
                     </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div style="display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-sm);">
+                        <a href="https://www.instagram.com/bubaclinicaitaiopolis/" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           style="display: inline-block; width: 40px; height: 40px; text-decoration: none;"
+                           aria-label="Instagram">
+                            <img src="images/icons/instagram.png" alt="Instagram" style="width: 40px; height: 40px; object-fit: contain;">
+                        </a>
+                        <a href="https://wa.me/5547999300027?text=Olá,%20gostaria%20de%20mais%20informações" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           style="display: inline-block; width: 40px; height: 40px; text-decoration: none;"
+                           aria-label="WhatsApp">
+                            <img src="images/icons/whatsapp.png" alt="WhatsApp" style="width: 40px; height: 40px; object-fit: contain;">
+                        </a>
+                    </div>
                 </div>
             </div>
             
@@ -108,14 +133,92 @@
 
     <script src="js/main.js"></script>
     <script>
+        // Dados dos serviços - carregado diretamente
+        const servicesData = {
+          "services": [
+            {
+              "id": 1,
+              "name": "Medicina Funcional",
+              "area": "medica",
+              "description": "Abordagem médica que foca na prevenção e tratamento através da compreensão das causas raiz das doenças.",
+              "icon": "medical"
+            },
+            {
+              "id": 2,
+              "name": "Medicina Integrativa",
+              "area": "medica",
+              "description": "Combina tratamentos convencionais com terapias complementares para tratar o paciente de forma holística.",
+              "icon": "integrative"
+            },
+            {
+              "id": 3,
+              "name": "Saúde Capilar",
+              "area": "medica",
+              "description": "Tratamentos especializados para problemas capilares, queda de cabelo e saúde do couro cabeludo.",
+              "icon": "hair"
+            },
+            {
+              "id": 4,
+              "name": "Cirurgia de Sisos",
+              "area": "odontologica",
+              "description": "Remoção cirúrgica de terceiros molares com técnica avançada e cuidadoso pós-operatório.",
+              "icon": "surgery"
+            },
+            {
+              "id": 5,
+              "name": "Implantes Dentários",
+              "area": "odontologica",
+              "description": "Reabilitação oral através de implantes de alta qualidade para restabelecer função e estética.",
+              "icon": "implant"
+            },
+            {
+              "id": 6,
+              "name": "Tratamento para Bruxismo",
+              "area": "odontologica",
+              "description": "Diagnóstico e tratamento do bruxismo através de placas oclusais e acompanhamento especializado.",
+              "icon": "bruxism"
+            },
+            {
+              "id": 7,
+              "name": "Clareamento Dental",
+              "area": "odontologica",
+              "description": "Clareamento dental seguro e eficaz, incluindo opções para dentes sensíveis.",
+              "icon": "whitening"
+            },
+            {
+              "id": 8,
+              "name": "Limpeza e Prevenção",
+              "area": "odontologica",
+              "description": "Profilaxia dental profissional e orientações para manutenção da saúde bucal.",
+              "icon": "cleaning"
+            },
+            {
+              "id": 9,
+              "name": "Estética Facial",
+              "area": "estetica",
+              "description": "Tratamentos estéticos faciais não-invasivos para rejuvenescimento e cuidado da pele.",
+              "icon": "facial"
+            },
+            {
+              "id": 10,
+              "name": "Harmonização Facial",
+              "area": "estetica",
+              "description": "Procedimentos para harmonização e balanceamento das proporções faciais.",
+              "icon": "harmony"
+            }
+          ]
+        };
+        
         // Carrega e renderiza serviços
-        async function loadServices() {
+        function loadServices() {
             try {
-                const response = await fetch('data/services.json');
-                const data = await response.json();
-                const services = data.services;
-                
+                const services = servicesData.services;
                 const container = document.getElementById('services-container');
+                
+                if (!container) {
+                    console.error('Container #services-container não encontrado!');
+                    return;
+                }
                 
                 // Agrupa por área
                 const grouped = {
@@ -170,8 +273,11 @@
                 
             } catch (error) {
                 console.error('Erro ao carregar serviços:', error);
-                document.getElementById('services-container').innerHTML = 
-                    '<div class="loading">Erro ao carregar serviços. Por favor, tente novamente mais tarde.</div>';
+                const container = document.getElementById('services-container');
+                if (container) {
+                    container.innerHTML = 
+                        '<div class="loading">Erro ao carregar serviços. Por favor, verifique o console do navegador (F12).</div>';
+                }
             }
         }
         

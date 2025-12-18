@@ -22,11 +22,7 @@ BubaClinicaIntegrada/
 │   ├── main.js            # JavaScript principal (navegação, menu)
 │   ├── doctors.js         # Lógica de médicos e filtros
 │   └── reviews.js         # Lógica de avaliações
-├── data/
-│   ├── doctors.json       # Dados dos médicos
-│   ├── services.json      # Lista de serviços
-│   ├── insurance.json     # Planos de saúde aceitos
-│   └── reviews.json       # Avaliações dos pacientes
+├── data/                  # Diretório para dados futuros (opcional)
 └── images/
     ├── logo/              # Logo da clínica
     ├── doctors/           # Fotos dos médicos
@@ -57,10 +53,10 @@ O site foi desenvolvido seguindo a identidade visual da clínica:
 
 ### Atualizar Informações dos Médicos
 
-Edite o arquivo `data/doctors.json`:
+Edite o arquivo `js/doctors.js` e localize a constante `doctorsData` (linhas 7-46):
 
-```json
-{
+```javascript
+const doctorsData = {
   "doctors": [
     {
       "id": 1,
@@ -72,7 +68,7 @@ Edite o arquivo `data/doctors.json`:
       "description": "Descrição do profissional"
     }
   ]
-}
+};
 ```
 
 **Campos:**
@@ -83,14 +79,14 @@ Edite o arquivo `data/doctors.json`:
 ### Adicionar Fotos dos Médicos
 
 1. Adicione as fotos em `images/doctors/`
-2. Atualize o campo `photo` no `doctors.json` com o nome do arquivo
+2. Atualize o campo `photo` no `js/doctors.js` com o nome do arquivo
 
 ### Atualizar Serviços
 
-Edite o arquivo `data/services.json`:
+Edite o arquivo `servicos.html` e localize a constante `servicesData` no script inline (após a linha 115):
 
-```json
-{
+```javascript
+const servicesData = {
   "services": [
     {
       "id": 1,
@@ -100,15 +96,15 @@ Edite o arquivo `data/services.json`:
       "icon": "icon-name"
     }
   ]
-}
+};
 ```
 
 ### Atualizar Planos de Saúde
 
-Edite o arquivo `data/insurance.json`:
+Edite o arquivo `planos.html` e localize a constante `insuranceData` no script inline (após a linha 118):
 
-```json
-{
+```javascript
+const insuranceData = {
   "insurance": [
     {
       "id": 1,
@@ -116,15 +112,15 @@ Edite o arquivo `data/insurance.json`:
       "category": "premium|intermediário|básico"
     }
   ]
-}
+};
 ```
 
 ### Adicionar Avaliações
 
-Edite o arquivo `data/reviews.json`:
+Edite o arquivo `js/reviews.js` e localize a constante `reviewsData` (linhas 7-50):
 
-```json
-{
+```javascript
+const reviewsData = {
   "reviews": [
     {
       "id": 1,
@@ -135,7 +131,7 @@ Edite o arquivo `data/reviews.json`:
       "photo": "images/reviews/foto.jpg"
     }
   ]
-}
+};
 ```
 
 **Nota:** O campo `photo` é opcional. Se não tiver foto, deixe como string vazia `""`.
