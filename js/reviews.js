@@ -1,5 +1,5 @@
 /* ========================================
-   BUBA Clínica Integrada - JavaScript Avaliações
+   Buba Clínica Integrada - JavaScript Avaliações
    ======================================== */
 
 // Dados das avaliações - editados diretamente neste arquivo
@@ -36,14 +36,6 @@ const reviewsData = {
       "area": "odontologica",
       "rating": 5,
       "text": "Implante dentário realizado com sucesso. Profissionais de alto nível e ambiente muito acolhedor.",
-      "photo": ""
-    },
-    {
-      "id": 5,
-      "name": "Carla Mendes",
-      "area": "estetica",
-      "rating": 5,
-      "text": "Tratamentos estéticos de excelência! Resultados naturais e profissionais muito competentes.",
       "photo": ""
     },
     {
@@ -177,8 +169,7 @@ function renderStars(rating) {
 function getAreaName(area) {
     const areaNames = {
         'medica': 'Área Médica',
-        'odontologica': 'Área Odontológica',
-        'estetica': 'Área Estética'
+        'odontologica': 'Área Odontológica'
     };
     
     return areaNames[area] || area;

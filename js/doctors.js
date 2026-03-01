@@ -1,5 +1,5 @@
 /* ========================================
-   BUBA Clínica Integrada - JavaScript Médicos
+   Buba Clínica Integrada - JavaScript Médicos
    ======================================== */
 
 // Dados dos médicos - editados diretamente neste arquivo
@@ -32,15 +32,6 @@ const doctorsData = {
       "conselhoDeClasse": "CRO PR-XXXXX",
       "photo": "images/doctors/jessyca-buba.jpg",
       "description": "Especialista em cirurgia de terceiros molares (sisos), implantes dentários e tratamento para bruxismo. Comprometida com o bem-estar e conforto dos pacientes."
-    },
-    {
-      "id": 4,
-      "name": "Dr. Exemplo Estético",
-      "specialty": "Especialista em Estética",
-      "area": "estetica",
-      "conselhoDeClasse": "CRM PR-XXXXX",
-      "photo": "images/doctors/exemplo-estetica.jpg",
-      "description": "Profissional especializado em tratamentos estéticos não-invasivos e procedimentos de beleza. Exemplo de template que pode ser substituído por profissional real."
     }
   ]
 };

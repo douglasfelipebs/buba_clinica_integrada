@@ -129,6 +129,48 @@
     z-index: 0;
 }
 
+/* Hero com foto de fundo (apenas página inicial) */
+.hero-with-bg {
+    background-image: url('../images/clinic/fachada.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-with-bg::before {
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 1;
+}
+
+.hero-with-bg h1 {
+    background: linear-gradient(135deg, #5a5a5a 0%, #D99440 50%, var(--color-primary-light) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: none;
+}
+
+.hero-with-bg p {
+    color: #ffffff !important;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 0, 0, 0.5);
+}
+
+.hero-with-bg .btn-primary,
+.hero-with-bg .btn-primary:hover {
+    color: var(--color-bg-primary) !important;
+    -webkit-text-fill-color: var(--color-bg-primary) !important;
+}
+
+.hero-with-bg .btn-secondary {
+    color: var(--color-primary) !important;
+    -webkit-text-fill-color: var(--color-primary) !important;
+}
+
+.hero-with-bg .btn-secondary:hover {
+    color: var(--color-bg-primary) !important;
+    -webkit-text-fill-color: var(--color-bg-primary) !important;
+}
+
 .hero-content {
     position: relative;
     z-index: 1;
@@ -168,10 +210,13 @@
 .btn-primary {
     background-color: var(--color-primary);
     color: var(--color-bg-primary);
+    -webkit-text-fill-color: var(--color-bg-primary);
 }
 
 .btn-primary:hover {
     background-color: var(--color-primary-dark);
+    color: var(--color-bg-primary);
+    -webkit-text-fill-color: var(--color-bg-primary);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -179,23 +224,27 @@
 .btn-secondary {
     background-color: transparent;
     color: var(--color-primary);
+    -webkit-text-fill-color: var(--color-primary);
     border-color: var(--color-primary);
 }
 
 .btn-secondary:hover {
     background-color: var(--color-primary);
     color: var(--color-bg-primary);
+    -webkit-text-fill-color: var(--color-bg-primary);
 }
 
 .btn-outline {
     background-color: transparent;
     color: var(--color-text-primary);
+    -webkit-text-fill-color: var(--color-text-primary);
     border-color: var(--color-secondary);
 }
 
 .btn-outline:hover {
     background-color: var(--color-secondary);
     color: var(--color-bg-primary);
+    -webkit-text-fill-color: var(--color-bg-primary);
 }
 
 /* Cards */
@@ -276,7 +325,7 @@
 /* Footer */
 .footer {
     background-color: var(--color-secondary);
-    color: var(--color-bg-primary);
+    color: #FFFFFF;
     padding: var(--spacing-xl) 0 var(--spacing-md);
     margin-top: var(--spacing-xxl);
 }
@@ -289,9 +338,13 @@
 }
 
 .footer-section h4 {
-    color: var(--color-bg-primary);
+    color: #FFFFFF;
     margin-bottom: var(--spacing-sm);
     font-size: var(--font-size-lg);
+}
+
+.footer-section p {
+    color: #FFFFFF;
 }
 
 .footer-section ul {
@@ -303,7 +356,7 @@
 }
 
 .footer-section a {
-    color: var(--color-bg-secondary);
+    color: #FFFFFF;
     transition: color var(--transition-fast);
 }
 
@@ -315,8 +368,12 @@
     text-align: center;
     padding-top: var(--spacing-md);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--color-bg-secondary);
+    color: #FFFFFF;
     font-size: var(--font-size-sm);
+}
+
+.footer-bottom p {
+    color: #FFFFFF;
 }
 
 /* Filtros */
@@ -336,12 +393,15 @@
     cursor: pointer;
     transition: all var(--transition-fast);
     font-weight: 500;
+    color: var(--color-text-primary);
+    -webkit-text-fill-color: var(--color-text-primary);
 }
 
 .filter-btn:hover,
 .filter-btn.active {
     background-color: var(--color-primary);
     color: var(--color-bg-primary);
+    -webkit-text-fill-color: var(--color-bg-primary);
     border-color: var(--color-primary);
 }
 
@@ -383,5 +443,262 @@
     width: 100%;
     height: 100%;
     border: none;
+}
+
+/* Localização - foto e mapa lado a lado (mesmas dimensões, incluindo legendas) */
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: stretch;
+}
+
+.location-grid .clinic-photo,
+.location-grid .map-container {
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    margin: 0;
+}
+
+.location-grid .clinic-photo img,
+.location-grid .map-container iframe {
+    flex: 1;
+    min-height: 300px;
+    min-width: 0;
+    width: 100%;
+}
+
+.location-grid .clinic-photo img {
+    object-fit: cover;
+}
+
+.location-grid .clinic-photo p,
+.location-grid .map-container > p {
+    flex-shrink: 0;
+    padding: var(--spacing-sm);
+    margin: 0;
+    min-height: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Desktop: dimensões fixas 485x450 */
+@media (min-width: 769px) {
+    .location-grid {
+        grid-template-columns: 485px 485px;
+        justify-content: center;
+    }
+    
+    .location-grid .clinic-photo,
+    .location-grid .map-container {
+        width: 485px;
+        height: 450px;
+        flex-shrink: 0;
+    }
+    
+    .location-grid .clinic-photo img,
+    .location-grid .map-container iframe {
+        flex: 1;
+        min-height: 0;
+    }
+}
+
+/* ========================================
+   Galeria de Fotos da Clínica
+   ======================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+.gallery-item:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-normal);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-caption {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-bg-primary);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--color-text-primary);
+    text-align: center;
+}
+
+/* Mini-galeria dentro de seções (ex: serviços por área) */
+.facility-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.facility-gallery .gallery-item img {
+    height: 160px;
+}
+
+/* Foto única em destaque (ex: fachada no contato) */
+.clinic-photo {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.clinic-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fotos clicáveis - cursor e feedback visual */
+.gallery-item,
+.clinic-photo,
+.facility-gallery .gallery-item {
+    cursor: pointer;
+}
+
+.doctor-card .card-img,
+#reviews-container .card .card-img {
+    cursor: pointer;
+}
+
+/* ========================================
+   Lightbox - Visualização de Fotos
+   ======================================== */
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-md);
+    cursor: pointer;
+}
+
+.lightbox-overlay.active {
+    display: flex;
+}
+
+.lightbox-content {
+    max-width: 95vw;
+    max-height: 95vh;
+    position: relative;
+    cursor: default;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 95vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+}
+
+.lightbox-caption {
+    color: var(--color-bg-primary);
+    text-align: center;
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-base);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--color-bg-primary);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    line-height: 1;
+}
+
+.lightbox-close:hover {
+    color: var(--color-primary-light);
+}
+
+.lightbox-prev,
+.lightbox-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--color-bg-primary);
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+    z-index: 10001;
+    line-height: 1;
+    text-align: center;
+}
+
+.lightbox-prev svg,
+.lightbox-next svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.lightbox-prev {
+    left: var(--spacing-md);
+}
+
+.lightbox-next {
+    right: var(--spacing-md);
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--color-primary);
+    color: var(--color-primary-light);
+}
+
+.lightbox-prev.hidden,
+.lightbox-next.hidden {
+    opacity: 0.3;
+    pointer-events: none;
 }
 

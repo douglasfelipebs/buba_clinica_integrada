@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Serviços oferecidos pela BUBA Clínica Integrada: medicina, odontologia e estética.">
-    <title>Serviços - BUBA Clínica Integrada</title>
+    <meta name="description" content="Serviços oferecidos pela Buba Clínica Integrada: medicina e odontologia.">
+    <title>Serviços - Buba Clínica Integrada</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="images/logo/logo.jpeg">
@@ -20,7 +20,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="index.html" class="logo">
-                    <img src="images/logo/logo.jpeg" alt="BUBA Clínica Integrada" onerror="this.style.display='none'">
+                    <img src="images/logo/logo.jpeg" alt="Buba Clínica Integrada" onerror="this.style.display='none'">
                     <div class="logo-text">
                         <span class="logo-name">BUBA</span>
                         <span class="logo-tagline">Clínica Integrada</span>
@@ -77,23 +77,11 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>BUBA Clínica Integrada</h4>
-                    <p>Medicina • Odontologia • Estética</p>
+                    <h4>Buba Clínica Integrada</h4>
+                    <p>Medicina • Odontologia</p>
                     <p style="margin-top: var(--spacing-sm); font-size: var(--font-size-sm);">
                         Cuidado completo para você e sua família em Itaiópolis.
                     </p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Links Rápidos</h4>
-                    <ul>
-                        <li><a href="index.html">Início</a></li>
-                        <li><a href="sobre.html">Sobre</a></li>
-                        <li><a href="medicos.html">Médicos</a></li>
-                        <li><a href="servicos.html">Serviços</a></li>
-                        <li><a href="planos.html">Planos</a></li>
-                        <li><a href="contato.html">Contato</a></li>
-                    </ul>
                 </div>
                 
                 <div class="footer-section">
@@ -126,7 +114,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 BUBA Clínica Integrada. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Buba Clínica Integrada. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -192,20 +180,6 @@
               "description": "Profilaxia dental profissional e orientações para manutenção da saúde bucal.",
               "icon": "cleaning"
             },
-            {
-              "id": 9,
-              "name": "Estética Facial",
-              "area": "estetica",
-              "description": "Tratamentos estéticos faciais não-invasivos para rejuvenescimento e cuidado da pele.",
-              "icon": "facial"
-            },
-            {
-              "id": 10,
-              "name": "Harmonização Facial",
-              "area": "estetica",
-              "description": "Procedimentos para harmonização e balanceamento das proporções faciais.",
-              "icon": "harmony"
-            }
           ]
         };
         
@@ -223,23 +197,46 @@
                 // Agrupa por área
                 const grouped = {
                     medica: services.filter(s => s.area === 'medica'),
-                    odontologica: services.filter(s => s.area === 'odontologica'),
-                    estetica: services.filter(s => s.area === 'estetica')
+                    odontologica: services.filter(s => s.area === 'odontologica')
                 };
                 
                 const areaNames = {
                     medica: 'Área Médica',
-                    odontologica: 'Área Odontológica',
-                    estetica: 'Área Estética'
+                    odontologica: 'Área Odontológica'
+                };
+                
+                const areaPhotos = {
+                    medica: [
+                        { src: 'images/clinic/consultorio-medico-1.png', alt: 'Consultório médico' },
+                        { src: 'images/clinic/consultorio-medico-2.png', alt: 'Consultório médico' }
+                    ],
+                    odontologica: [
+                        { src: 'images/clinic/consultorio-odontologico-1.png', alt: 'Consultório odontológico' },
+                        { src: 'images/clinic/consultorio-odontologico-2.png', alt: 'Consultório odontológico' },
+                        { src: 'images/clinic/consultorio-odontologico-3.png', alt: 'Consultório odontológico' }
+                    ]
                 };
                 
                 let html = '';
                 
-                ['medica', 'odontologica', 'estetica'].forEach(area => {
+                ['medica', 'odontologica'].forEach(area => {
                     if (grouped[area].length > 0) {
                         html += `<div class="fade-in" style="margin-bottom: var(--spacing-xl);">`;
                         html += `<h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-md);">${areaNames[area]}</h2>`;
-                        html += `<div class="cards-grid">`;
+                        
+                        if (areaPhotos[area].length > 0) {
+                            html += `<div class="facility-gallery">`;
+                            areaPhotos[area].forEach(photo => {
+                                html += `
+                                    <div class="gallery-item">
+                                        <img src="${photo.src}" alt="${photo.alt}">
+                                    </div>
+                                `;
+                            });
+                            html += `</div>`;
+                        }
+                        
+                        html += `<div class="cards-grid" style="margin-top: var(--spacing-md);">`;
                         
                         grouped[area].forEach(service => {
                             html += `

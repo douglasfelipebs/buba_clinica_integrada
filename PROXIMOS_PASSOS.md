@@ -1,4 +1,4 @@
-# Próximos Passos - BUBA Clínica Integrada
+# Próximos Passos - Buba Clínica Integrada
 
 ## 📋 Checklist de Implementação
 
@@ -21,7 +21,7 @@
 - [x] **Localização:** `images/logo/logo.jpeg`
 - [x] **Formato:** PNG com fundo transparente (recomendado)
 - [x] **Tamanho sugerido:** Mínimo 200x200px
-- [x] **Status:** ⚠️ Sem a logo, o header mostrará apenas o texto "BUBA Clínica Integrada"
+- [x] **Status:** ⚠️ Sem a logo, o header mostrará apenas o texto "Buba Clínica Integrada"
 
 ### 2. Informações de Contato Completas
 - [x] **Arquivo:** `contato.html`

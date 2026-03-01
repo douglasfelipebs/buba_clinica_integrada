@@ -1,6 +1,6 @@
-# BUBA Clínica Integrada - Site Institucional
+# Buba Clínica Integrada - Site Institucional
 
-Site institucional da BUBA Clínica Integrada, desenvolvido em HTML, CSS e JavaScript puro (sem dependências externas ou banco de dados).
+Site institucional da Buba Clínica Integrada, desenvolvido em HTML, CSS e JavaScript puro (sem dependências externas ou banco de dados).
 
 ## 📋 Estrutura do Projeto
 
@@ -221,7 +221,7 @@ Para dúvidas ou problemas, verifique:
 
 ---
 
-**Desenvolvido para BUBA Clínica Integrada**  
+**Desenvolvido para Buba Clínica Integrada**  
 Medicina • Odontologia • Estética  
 Itaiópolis - PR
 

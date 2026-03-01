@@ -1,5 +1,5 @@
 /* ========================================
-   BUBA Clínica Integrada - JavaScript Principal
+   Buba Clínica Integrada - JavaScript Principal
    ======================================== */
 
 // Aguarda o carregamento completo do DOM
@@ -136,7 +136,155 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // ========================================
+    // Lightbox - Fotos clicáveis e visualizáveis
+    // ========================================
+    initLightbox();
+    
 });
+
+// ========================================
+// Lightbox para visualização de fotos
+// ========================================
+function initLightbox() {
+    var lightboxEl = document.getElementById('photo-lightbox');
+    if (!lightboxEl) {
+        lightboxEl = document.createElement('div');
+        lightboxEl.id = 'photo-lightbox';
+        lightboxEl.className = 'lightbox-overlay';
+        lightboxEl.innerHTML = '<button class="lightbox-prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>' +
+            '<div class="lightbox-content">' +
+            '<button class="lightbox-close" aria-label="Fechar">×</button>' +
+            '<img src="" alt="">' +
+            '<p class="lightbox-caption"></p>' +
+            '</div>' +
+            '<button class="lightbox-next" aria-label="Próxima"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>';
+        document.body.appendChild(lightboxEl);
+    }
+    
+    var overlay = lightboxEl;
+    var img = lightboxEl.querySelector('.lightbox-content img');
+    var caption = lightboxEl.querySelector('.lightbox-caption');
+    var closeBtn = lightboxEl.querySelector('.lightbox-close');
+    var prevBtn = lightboxEl.querySelector('.lightbox-prev');
+    var nextBtn = lightboxEl.querySelector('.lightbox-next');
+    
+    var photos = [];
+    var currentIndex = 0;
+    
+    function getPhotosFromPage() {
+        var items = [];
+        var selectors = '.gallery-item, .clinic-photo, .facility-gallery .gallery-item, .doctor-card';
+        document.querySelectorAll(selectors).forEach(function(el) {
+            var photoImg = el.querySelector('img');
+            if (photoImg && photoImg.src && photoImg.src.indexOf('data:') !== 0) {
+                items.push({ src: photoImg.src, alt: photoImg.alt || '' });
+            }
+        });
+        document.querySelectorAll('#reviews-container .card').forEach(function(card) {
+            var reviewImg = card.querySelector('img.card-img');
+            if (reviewImg && reviewImg.src && reviewImg.src.indexOf('data:') !== 0) {
+                items.push({ src: reviewImg.src, alt: reviewImg.alt || '' });
+            }
+        });
+        return items;
+    }
+    
+    function showPhoto(index) {
+        if (index < 0 || index >= photos.length) return;
+        currentIndex = index;
+        var photo = photos[currentIndex];
+        img.src = photo.src;
+        img.alt = photo.alt;
+        caption.textContent = photo.alt;
+        caption.style.display = photo.alt ? 'block' : 'none';
+        prevBtn.style.display = photos.length > 1 ? 'flex' : 'none';
+        nextBtn.style.display = photos.length > 1 ? 'flex' : 'none';
+        prevBtn.classList.toggle('hidden', index === 0);
+        nextBtn.classList.toggle('hidden', index === photos.length - 1);
+    }
+    
+    function openLightbox(src, alt) {
+        if (!src || src.indexOf('data:') === 0) return;
+        photos = getPhotosFromPage();
+        var index = photos.findIndex(function(p) { return p.src === src; });
+        if (index === -1) {
+            photos = [{ src: src, alt: alt || '' }];
+            index = 0;
+        }
+        currentIndex = index;
+        showPhoto(currentIndex);
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    function showNext() {
+        if (currentIndex < photos.length - 1) {
+            showPhoto(currentIndex + 1);
+        }
+    }
+    
+    function showPrev() {
+        if (currentIndex > 0) {
+            showPhoto(currentIndex - 1);
+        }
+    }
+    
+    document.addEventListener('click', function(e) {
+        var container = e.target.closest('.gallery-item, .clinic-photo, .facility-gallery .gallery-item, .doctor-card');
+        if (container) {
+            var photoImg = container.querySelector('img');
+            if (photoImg) {
+                e.preventDefault();
+                e.stopPropagation();
+                openLightbox(photoImg.src, photoImg.alt);
+            }
+        }
+        if (e.target.closest('#reviews-container .card')) {
+            var card = e.target.closest('#reviews-container .card');
+            var reviewImg = card.querySelector('img.card-img');
+            if (reviewImg) {
+                e.preventDefault();
+                e.stopPropagation();
+                openLightbox(reviewImg.src, reviewImg.alt);
+            }
+        }
+    });
+    
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay || e.target.classList.contains('lightbox-close')) {
+            closeLightbox();
+        }
+    });
+    
+    prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showPrev();
+    });
+    
+    nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        showNext();
+    });
+    
+    closeBtn.addEventListener('click', closeLightbox);
+    
+    document.addEventListener('keydown', function(e) {
+        if (!overlay.classList.contains('active')) return;
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowLeft') {
+            showPrev();
+        } else if (e.key === 'ArrowRight') {
+            showNext();
+        }
+    });
+}
 
 // ========================================
 // Função auxiliar para formatar telefone
