@@ -8,46 +8,79 @@ const doctorsData = {
   "doctors": [
     {
       "id": 1,
-      "name": "Dr. Lucas G. Buba",
-      "specialty": "Cirurgião Dentista",
+      "name": "Dr. Lucas Gustavo Buba",
+      "specialty": "Clínica Geral | Prótese Dentária",
+      "specialtyTags": ["Clínica geral", "Prótese dentária"],
       "area": "odontologica",
-      "conselhoDeClasse": "CRO PR-XXXXX",
-      "photo": "images/doctors/lucas-buba.jpg",
-      "description": "Especialista em cirurgia oral, implantes dentários e tratamentos estéticos odontológicos. Dedicado a proporcionar o melhor cuidado e resultados aos pacientes."
+      "conselhoDeClasse": "CRO-SC 25167",
+      "photo": null,
+      "description": "Cirurgião-dentista formado pela PUCPR, atua em clínica geral com foco em qualidade, segurança e atendimento humanizado. Natural de Itaiópolis, retorna à cidade com o compromisso de oferecer uma experiência odontológica diferenciada, aliando cuidado individualizado à constante atualização por meio de sua especialização em Prótese Dentária. Seu objetivo é proporcionar tratamentos eficazes, confortáveis e alinhados às necessidades de cada paciente.",
+      "bioExtended": null,
+      "formacao": [
+        "Graduação em Odontologia — PUCPR (Pontifícia Universidade Católica do Paraná)",
+        "Especialização em Prótese Dentária — aperfeiçoamento contínuo"
+      ]
     },
     {
       "id": 2,
-      "name": "Dra. Beatriz Boldori",
-      "specialty": "Médica Integrativa",
+      "name": "Dra. Beatriz Peruzzolo Boldori",
+      "specialty": "Clínica Geral | Tricologia",
+      "specialtyTags": ["Clínica geral", "Tricologia"],
       "area": "medica",
-      "conselhoDeClasse": "CRM PR-XXXXX",
-      "photo": "images/doctors/beatriz-boldori.jpg",
-      "description": "Médica especializada em medicina funcional e integrativa, focada em tratamentos personalizados que consideram o paciente como um todo. Também atende na área de saúde capilar."
+      "conselhoDeClasse": "CRM 37995/SC",
+      "photo": "images/doctors/dra_beatriz.jpeg",
+      "description": "Médica dedicada ao cuidado integral da saúde, com atuação em saúde capilar, medicina funcional integrativa, emagrecimento, longevidade e reposição hormonal. Seu trabalho é focado em identificar e tratar as causas dos desequilíbrios do organismo, promovendo bem-estar, qualidade de vida e resultados duradouros. Através de uma abordagem personalizada, busca auxiliar cada paciente a alcançar sua melhor versão de forma equilibrada e sustentável.",
+      "bioExtended": null,
+      "formacao": []
     },
     {
       "id": 3,
       "name": "Dra. Jessyca Buba",
       "specialty": "Cirurgiã Dentista",
+      "specialtyTags": ["Cirurgia odontológica", "Implantes", "Bruxismo"],
       "area": "odontologica",
       "conselhoDeClasse": "CRO PR-XXXXX",
       "photo": "images/doctors/jessyca-buba.jpg",
-      "description": "Especialista em cirurgia de terceiros molares (sisos), implantes dentários e tratamento para bruxismo. Comprometida com o bem-estar e conforto dos pacientes."
+      "description": "Especialista em cirurgia de terceiros molares (sisos), implantes dentários e tratamento para bruxismo. Comprometida com o bem-estar e conforto dos pacientes.",
+      "bioExtended": null,
+      "formacao": []
+    },
+    {
+      "id": 4,
+      "name": "Dra. Maria Eduarda Kostecki",
+      "specialty": "Cardiologia",
+      "specialtyTags": ["Cardiologia"],
+      "area": "medica",
+      "conselhoDeClasse": "CRM 25104 | RQE 23036",
+      "photo": "images/doctors/dra_eduarda.jpeg",
+      "description": "Médica especialista em Cardiologia, com formação sólida e atuação focada na prevenção, diagnóstico e tratamento das doenças cardiovasculares. Realiza acompanhamento completo com abordagem individualizada e baseada em evidências, auxiliando seus pacientes no controle de condições como hipertensão, dislipidemias, insuficiência cardíaca, doença coronariana e arritmias. Seu objetivo é promover saúde, qualidade de vida e segurança em cada etapa do cuidado.",
+      "bioExtended": null,
+      "formacao": [
+        "Graduação em Medicina pela Universidade da Região de Joinville/SC - Univille",
+        "Residência em Clínica Médica pelo Hospital Regional Hans Dieter Schmidt - Joinville/SC",
+        "Residência em Cardiologia pelo Hospital Santa Casa de Curitiba/PR",
+        "Título em Cardiologia pela Sociedade Brasileira de Cardiologia (SBC)"
+      ]
     }
   ]
 };
+
+function getDoctorById(id) {
+    const n = parseInt(id, 10);
+    if (Number.isNaN(n)) return null;
+    return doctorsData.doctors.find(d => d.id === n) || null;
+}
 
 let allDoctors = [];
 let filteredDoctors = [];
 
 // Aguarda o carregamento completo do DOM
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // Carrega os dados dos médicos
-    loadDoctors();
-    
-    // Configura os filtros
-    setupFilters();
-    
+    if (document.getElementById('doctors-container')) {
+        loadDoctors();
+        setupFilters();
+        setupDoctorCardNavigation();
+    }
 });
 
 // ========================================
@@ -105,20 +138,28 @@ function renderDoctors(doctors) {
     
     console.log(`Renderizando ${doctors.length} médico(s)`);
     
-    container.innerHTML = doctors.map(doctor => `
-        <div class="card doctor-card fade-in">
-            <img src="${doctor.photo}" 
+    container.innerHTML = doctors.map(doctor => {
+        const photoHtml = doctor.photo
+            ? `<img src="${doctor.photo}" 
                  alt="${doctor.name}" 
                  class="card-img"
-                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23E8E8E8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%236B6B6B%22 font-family=%22Arial%22 font-size=%2214%22%3ESem Foto%3C/text%3E%3C/svg%3E'">
+                 onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23E8E8E8%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%236B6B6B%22 font-family=%22Arial%22 font-size=%2214%22%3ESem Foto%3C/text%3E%3C/svg%3E'">`
+            : `<div class="card-img doctor-photo-placeholder" role="img" aria-label="${doctor.name} — sem foto"><span>Sem foto</span></div>`;
+        return `
+        <div class="card doctor-card doctor-card--navigate fade-in" data-doctor-id="${doctor.id}">
+            ${photoHtml}
             <div class="card-content">
                 <h3 class="doctor-name">${doctor.name}</h3>
                 <p class="doctor-specialty">${doctor.specialty}</p>
                 <p class="doctor-council">${doctor.conselhoDeClasse}</p>
                 <p class="card-text">${doctor.description}</p>
+                <p class="doctor-card__profile-wrap">
+                    <a href="medico.html?id=${doctor.id}" class="doctor-card__profile-link">Ver perfil completo</a>
+                </p>
             </div>
         </div>
-    `).join('');
+    `;
+    }).join('');
     
     // Observa elementos para animação fade-in
     setTimeout(() => {
@@ -172,6 +213,27 @@ function setupFilters() {
             // Renderiza os médicos filtrados
             renderDoctors(filteredDoctors);
         });
+    });
+}
+
+// ========================================
+// Clique no card abre o perfil; foto e links não disparam navegação aqui
+// ========================================
+function setupDoctorCardNavigation() {
+    const container = document.getElementById('doctors-container');
+    if (!container) return;
+
+    container.addEventListener('click', function (e) {
+        const card = e.target.closest('.doctor-card');
+        if (!card || !container.contains(card)) return;
+
+        if (e.target.closest('img.card-img')) return;
+        if (e.target.closest('a[href]')) return;
+
+        const id = card.getAttribute('data-doctor-id');
+        if (!id) return;
+
+        window.location.href = 'medico.html?id=' + encodeURIComponent(id);
     });
 }
 

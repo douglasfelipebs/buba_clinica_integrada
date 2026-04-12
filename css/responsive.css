@@ -82,6 +82,20 @@
         gap: var(--spacing-sm);
     }
 
+    #doctors-container.doctors-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--spacing-lg);
+    }
+
+    .doctor-profile__layout {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .doctor-profile__name {
+        font-size: var(--font-size-2xl);
+    }
+
     .gallery-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: var(--spacing-sm);
@@ -135,6 +149,11 @@
     
     .cards-grid {
         grid-template-columns: 1fr;
+    }
+
+    #doctors-container.doctors-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
     }
     
     .doctor-card .card-img {

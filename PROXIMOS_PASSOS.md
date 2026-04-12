@@ -4,13 +4,14 @@
 
 ### ✅ Concluído
 - [x] Estrutura de diretórios
-- [x] Arquivos HTML (8 páginas)
+- [x] Arquivos HTML (páginas principais + `medico.html` perfil reutilizável)
 - [x] Arquivos CSS (estilos completos)
-- [x] Arquivos JavaScript (funcionalidades)
-- [x] Arquivos JSON de dados (templates)
+- [x] Arquivos JavaScript (funcionalidades; dados de médicos em `js/doctors.js`)
 - [x] README com documentação
 - [x] Design responsivo
 - [x] Identidade visual aplicada
+- [x] Página de perfil por médico (`medico.html?id=`) + link/WhatsApp com nome do profissional
+- [x] Listagem de médicos: até 3 por linha, clique no card abre perfil, clique na foto abre lightbox
 
 ---
 
@@ -53,24 +54,21 @@
 
 ### 4. Fotos dos Médicos
 - [ ] **Localização:** `images/doctors/`
-- [ ] **Fotos necessárias:**
-  - [ ] `lucas-buba.jpg` - Dr. Lucas G. Buba
-  - [ ] `beatriz-boldori.jpg` - Dra. Beatriz Boldori
-  - [ ] `jessyca-buba.jpg` - Dra. Jessyca Buba
-  - [ ] `exemplo-estetica.jpg` - (ou remover se não houver profissional de estética)
+- [x] **Já adicionadas no site:**
+  - [x] `dra_beatriz.jpeg` — Dra. Beatriz Peruzzolo Boldori
+  - [x] `dra_eduarda.jpeg` — Dra. Maria Eduarda Kostecki
+- [ ] **Ainda faltam (não marcar até enviar o arquivo):**
+  - [ ] Foto do **Dr. Lucas Gustavo Buba** (no `doctors.js` está `photo: null` até ter arquivo)
+  - [ ] Foto da **Dra. Jessyca Buba** (`jessyca-buba.jpg` referenciado — confirmar arquivo na pasta)
 
-- [ ] **Atualizar:** `data/doctors.json` com:
-  - [ ] Números corretos dos conselhos de classe (CRM/CRO)
-  - [ ] Descrições completas de cada profissional
-  - [ ] Especialidades detalhadas
+- [x] **Dados dos profissionais:** `js/doctors.js` (não há `data/doctors.json`)
+  - [x] Nomes, especialidades e textos principais atualizados (Lucas, Beatriz, Jessyca, Eduarda)
+  - [x] CRM/CRO corretos: Beatriz, Lucas, Eduarda
+  - [ ] **CRO da Dra. Jessyca** ainda placeholder (`CRO PR-XXXXX`) — substituir pelo número real
 
 ### 5. Fotos da Clínica (Opcional mas Recomendado)
-- [ ] **Localização:** `images/clinic/`
-- [ ] **Sugestões:**
-  - [ ] Foto da fachada
-  - [ ] Foto de consultórios
-  - [ ] Foto da recepção
-  - [ ] Fotos históricas (para página de História)
+- [x] **Localização:** `images/clinic/` — galeria em uso (fachada, recepção, salas de espera, consultórios, etc.)
+- [ ] **Opcional:** fotos extras ou imagens históricas específicas para `historia.html`
 
 ### 6. Logo da Clínica para Favicon
 - [x] **Ação:** Criar favicon
@@ -83,28 +81,32 @@
 ## 📝 Prioridade Média - Conteúdo e Dados
 
 ### 7. Completar Informações dos Médicos
-- [ ] **Arquivo:** `data/doctors.json`
-- [ ] **Verificar/Atualizar:**
-  - [ ] Números dos conselhos de classe (CRM/CRO) corretos
-  - [ ] Descrições profissionais completas
-  - [ ] Remover médico fictício de estética (se não houver profissional real)
-  - [ ] Adicionar mais médicos, se necessário
+- [x] **Arquivo:** `js/doctors.js` (+ perfil em `js/doctor-profile.js` / `medico.html`)
+- [x] **Já feito:**
+  - [x] Perfis com descrição completa (conforme enviado): Lucas, Beatriz, Jessyca, Eduarda
+  - [x] **Formação completa** no perfil: **Dra. Maria Eduarda Kostecki** (demais com `formacao: []` até enviarem)
+  - [x] Tags de especialidade e seção “Formação e trajetória” reutilizável por profissional
+- [ ] **Pendente (solicitar aos profissionais):**
+  - [ ] Itens em `formacao` para Beatriz, Lucas, Jessyca
+  - [ ] CRO real da Dra. Jessyca
+  - [ ] Fotos em falta (item 4)
+  - [ ] Novos médicos, se houver
 
 ### 8. Atualizar Lista de Serviços
-- [ ] **Arquivo:** `data/services.json`
+- [ ] **Arquivo:** `servicos.html` (objeto `servicesData` no próprio arquivo)
 - [ ] **Verificar:**
   - [ ] Todos os serviços estão listados?
   - [ ] Descrições estão corretas e completas?
   - [ ] Adicionar serviços específicos da clínica que faltam
 
 ### 9. Atualizar Planos de Saúde Aceitos
-- [ ] **Arquivo:** `data/insurance.json`
+- [ ] **Arquivo:** `planos.html` (objeto `insuranceData` no próprio arquivo)
 - [ ] **Ação:** Listar TODOS os planos realmente aceitos
 - [ ] **Verificar:** Categorias (premium, intermediário, básico) estão corretas?
-- [ ] **Nota:** Lista atual contém exemplos, precisa ser substituída pela lista real
+- [ ] **Nota:** Lista atual pode conter exemplos; substituir pela lista real
 
 ### 10. Adicionar Avaliações Reais
-- [ ] **Arquivo:** `data/reviews.json`
+- [ ] **Arquivo:** `js/reviews.js` (constante `reviewsData`)
 - [ ] **Ação:** Substituir avaliações de exemplo por avaliações reais
 - [ ] **Opcional:** Adicionar fotos dos pacientes em `images/reviews/`
 
@@ -157,10 +159,9 @@
 - [ ] Testar em diferentes tamanhos de tela
 
 ### 17. Teste de Carregamento de Dados
-- [ ] Verificar se `doctors.json` carrega corretamente
-- [ ] Verificar se `services.json` carrega corretamente
-- [ ] Verificar se `insurance.json` carrega corretamente
-- [ ] Verificar se `reviews.json` carrega corretamente
+- [ ] Verificar `js/doctors.js` na página `medicos.html` e `medico.html?id=…`
+- [ ] Verificar blocos de dados em `servicos.html` e `planos.html`
+- [ ] Verificar `js/reviews.js` na página `avaliacoes.html`
 
 ### 18. Verificação de Imagens Quebradas
 - [ ] Verificar console do navegador (F12) por erros
@@ -194,15 +195,15 @@
 3. ✅ Informações de contato corretas - CONCLUÍDO
 
 ### 🟡 Importante (Site fica incompleto sem isso):
-4. Fotos dos médicos
-5. Dados corretos dos médicos (CRM/CRO)
-6. Lista real de planos de saúde
+4. Fotos em falta (Lucas, Jessyca) + CRO definitivo da Jessyca
+5. Formação dos demais médicos (só Eduarda está completa no perfil)
+6. Lista real de planos de saúde (`planos.html`)
 7. História da casa (texto real)
 
 ### 🟢 Desejável (Melhora a experiência):
-8. Fotos da clínica
-9. Avaliações reais
-10. Redes sociais
+8. Fotos históricas extras / refinamento da galeria da clínica
+9. Avaliações reais (`js/reviews.js`)
+10. ~~Redes sociais~~ — já configuradas (Instagram + WhatsApp)
 11. SEO aprimorado
 
 ---
@@ -212,7 +213,7 @@
 1. **Comece pelos itens críticos** - logo, endereço e contatos
 2. **Teste localmente** antes de publicar
 3. **Use um servidor local** para desenvolvimento (ex: Live Server no VS Code)
-4. **Valide os arquivos JSON** antes de salvar (use um validador online)
+4. **Valide a sintaxe** ao editar `doctors.js` / objetos nos HTML (vírgulas, aspas)
 5. **Otimize as imagens** antes de adicionar (reduza o tamanho do arquivo)
 6. **Mantenha backup** dos arquivos originais antes de fazer alterações
 
@@ -222,16 +223,17 @@
 
 - Consulte o `README.md` para instruções detalhadas
 - Verifique o console do navegador (F12) para erros JavaScript
-- Valide arquivos JSON em: https://jsonlint.com/
+- Para trechos JSON dentro de HTML/JS, valide em: https://jsonlint.com/
 - Teste responsividade em: https://responsivechecker.net/
 
 ---
 
 **Última atualização:** 
-- ✅ Logo adicionada
-- ✅ Informações de contato completas (endereço, telefone, horário)
-- ✅ Google Maps configurado
-- ✅ Favicon configurado
+- ✅ Logo, contato completo, Google Maps, favicon
+- ✅ Médicos: dados em `js/doctors.js`; perfil `medico.html?id=`; WhatsApp “Agendar consulta” com mensagem personalizada
+- ✅ Fotos: Dra. Beatriz e Dra. Eduarda; **sem foto** Dr. Lucas (placeholder); **pendente** foto Jessyca
+- ✅ Formação detalhada no perfil: **só Dra. Eduarda** (demais quando enviarem)
+- ✅ Galeria da clínica em `images/clinic/` em uso nas páginas
 
-**Status geral:** 🟢 75% completo - Itens críticos concluídos. Faltam principalmente fotos dos médicos e conteúdo adicional
+**Status geral:** 🟢 Itens críticos e boa parte do conteúdo médico ok. **Pendências principais:** fotos Lucas/Jessyca, CRO Jessyca, formação dos outros profissionais, planos/serviços/revisão de textos e avaliações reais
 

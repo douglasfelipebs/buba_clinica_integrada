@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conheça nossa equipe de profissionais: médicos e dentistas da Buba Clínica Integrada.">
-    <title>Nossa Equipe - Buba Clínica Integrada</title>
-    
-    <!-- Favicon -->
+    <meta name="description" id="page-meta-description" content="Conheça os profissionais da Buba Clínica Integrada em Itaiópolis.">
+    <title>Perfil — Buba Clínica Integrada</title>
+
     <link rel="icon" type="image/jpeg" href="images/logo/logo.jpeg">
     <link rel="shortcut icon" type="image/jpeg" href="images/logo/logo.jpeg">
     <link rel="apple-touch-icon" href="images/logo/logo.jpeg">
-    
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -26,7 +25,7 @@
                         <span class="logo-tagline">Clínica Integrada</span>
                     </div>
                 </a>
-                
+
                 <nav class="nav">
                     <ul class="nav-links">
                         <li><a href="index.html">Início</a></li>
@@ -44,28 +43,7 @@
         </div>
     </header>
 
-    <section class="hero" style="padding: var(--spacing-xl) 0;">
-        <div class="container">
-            <h1 class="section-title" style="margin-bottom: 0;">Nossa Equipe</h1>
-            <p class="text-center" style="margin-top: var(--spacing-sm); font-size: var(--font-size-lg);">
-                Profissionais dedicados ao seu bem-estar
-            </p>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="filters">
-                <button class="filter-btn active" data-filter="todos">Todos</button>
-                <button class="filter-btn" data-filter="medica">Área Médica</button>
-                <button class="filter-btn" data-filter="odontologica">Área Odontológica</button>
-            </div>
-
-            <div id="doctors-container" class="cards-grid doctors-grid">
-                <div class="loading">Carregando informações dos médicos...</div>
-            </div>
-        </div>
-    </section>
+    <main id="doctor-profile-root"></main>
 
     <footer class="footer">
         <div class="container">
@@ -77,7 +55,7 @@
                         Cuidado completo para você e sua família em Itaiópolis.
                     </p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Contato</h4>
                     <p>Itaiópolis - SC</p>
@@ -85,20 +63,20 @@
                         <a href="contato.html">Ver informações completas</a>
                     </p>
                 </div>
-                
+
                 <div class="footer-section">
                     <h4>Redes Sociais</h4>
                     <div style="display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-sm);">
-                        <a href="https://www.instagram.com/bubaclinicaitaiopolis/" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
+                        <a href="https://www.instagram.com/bubaclinicaitaiopolis/"
+                           target="_blank"
+                           rel="noopener noreferrer"
                            style="display: inline-block; width: 40px; height: 40px; text-decoration: none;"
                            aria-label="Instagram">
                             <img src="images/icons/instagram.png" alt="Instagram" style="width: 40px; height: 40px; object-fit: contain;">
                         </a>
-                        <a href="https://wa.me/5547999300027?text=Olá,%20gostaria%20de%20mais%20informações" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
+                        <a href="https://wa.me/5547999300027?text=Olá,%20gostaria%20de%20mais%20informações"
+                           target="_blank"
+                           rel="noopener noreferrer"
                            style="display: inline-block; width: 40px; height: 40px; text-decoration: none;"
                            aria-label="WhatsApp">
                             <img src="images/icons/whatsapp.png" alt="WhatsApp" style="width: 40px; height: 40px; object-fit: contain;">
@@ -106,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2025 Buba Clínica Integrada. Todos os direitos reservados.</p>
             </div>
@@ -115,6 +93,6 @@
 
     <script src="js/main.js"></script>
     <script src="js/doctors.js"></script>
+    <script src="js/doctor-profile.js"></script>
 </body>
 </html>
-

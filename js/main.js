@@ -174,7 +174,7 @@ function initLightbox() {
     
     function getPhotosFromPage() {
         var items = [];
-        var selectors = '.gallery-item, .clinic-photo, .facility-gallery .gallery-item, .doctor-card';
+        var selectors = '.gallery-item, .clinic-photo, .facility-gallery .gallery-item, .doctor-card, .doctor-profile-photo-trigger';
         document.querySelectorAll(selectors).forEach(function(el) {
             var photoImg = el.querySelector('img');
             if (photoImg && photoImg.src && photoImg.src.indexOf('data:') !== 0) {
@@ -236,13 +236,31 @@ function initLightbox() {
     }
     
     document.addEventListener('click', function(e) {
-        var container = e.target.closest('.gallery-item, .clinic-photo, .facility-gallery .gallery-item, .doctor-card');
+        var container = e.target.closest('.gallery-item, .clinic-photo, .facility-gallery .gallery-item');
         if (container) {
             var photoImg = container.querySelector('img');
             if (photoImg) {
                 e.preventDefault();
                 e.stopPropagation();
                 openLightbox(photoImg.src, photoImg.alt);
+            }
+        }
+        var doctorCard = e.target.closest('.doctor-card');
+        if (doctorCard && e.target.tagName === 'IMG' && e.target.classList.contains('card-img')) {
+            var docImg = e.target;
+            if (docImg.src && docImg.src.indexOf('data:') !== 0) {
+                e.preventDefault();
+                e.stopPropagation();
+                openLightbox(docImg.src, docImg.alt);
+            }
+        }
+        var profilePhoto = e.target.closest('.doctor-profile-photo-trigger');
+        if (profilePhoto && e.target.tagName === 'IMG' && e.target.classList.contains('doctor-profile__photo')) {
+            var profImg = e.target;
+            if (profImg.src && profImg.src.indexOf('data:') !== 0) {
+                e.preventDefault();
+                e.stopPropagation();
+                openLightbox(profImg.src, profImg.alt);
             }
         }
         if (e.target.closest('#reviews-container .card')) {
