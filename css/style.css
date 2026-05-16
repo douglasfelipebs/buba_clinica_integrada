@@ -29,8 +29,9 @@ body {
 :root {
     /* Cores Primárias - Identidade Visual */
     --color-primary: #CD7F32; /* Bronze/Dourado */
-    --color-primary-dark: #B8860B; /* Dourado mais escuro */
+    --color-primary-dark: #8C5523; /* Bronze mais escuro (mesmo matiz que o primário) */
     --color-primary-light: #E6B84C; /* Dourado mais claro */
+    --color-primary-subtle: #F7EFE6; /* Fundo quente suave (chips, outline hover) */
     
     /* Cores Secundárias */
     --color-secondary: #2C2C2C; /* Cinza Escuro/Grafite */
@@ -79,6 +80,8 @@ body {
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+    --shadow-primary-sm: 0 2px 10px rgba(140, 85, 35, 0.22);
+    --shadow-primary: 0 4px 16px rgba(140, 85, 35, 0.32);
     
     /* Transições */
     --transition-fast: 0.2s ease;

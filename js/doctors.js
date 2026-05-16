@@ -13,7 +13,7 @@ const doctorsData = {
       "specialtyTags": ["Clínica geral", "Prótese dentária"],
       "area": "odontologica",
       "conselhoDeClasse": "CRO-SC 25167",
-      "photo": null,
+      "photo": "images/doctors/dr_lucas.jpeg",
       "description": "Cirurgião-dentista formado pela PUCPR, atua em clínica geral com foco em qualidade, segurança e atendimento humanizado. Natural de Itaiópolis, retorna à cidade com o compromisso de oferecer uma experiência odontológica diferenciada, aliando cuidado individualizado à constante atualização por meio de sua especialização em Prótese Dentária. Seu objetivo é proporcionar tratamentos eficazes, confortáveis e alinhados às necessidades de cada paciente.",
       "bioExtended": null,
       "formacao": [
@@ -36,13 +36,13 @@ const doctorsData = {
     {
       "id": 3,
       "name": "Dra. Jessyca Buba",
-      "specialty": "Cirurgiã Dentista",
-      "specialtyTags": ["Cirurgia odontológica", "Implantes", "Bruxismo"],
+      "specialty": "Bucomaxilofacial | Implantes | Próteses",
+      "specialtyTags": ["Bucomaxilofacial", "Implantodontia", "Estética dental", "Ortodontia", "Prótese dentária", "DTM e HOF"],
       "area": "odontologica",
-      "conselhoDeClasse": "CRO PR-XXXXX",
-      "photo": "images/doctors/jessyca-buba.jpg",
-      "description": "Especialista em cirurgia de terceiros molares (sisos), implantes dentários e tratamento para bruxismo. Comprometida com o bem-estar e conforto dos pacientes.",
-      "bioExtended": null,
+      "conselhoDeClasse": "CRO-PR 28861",
+      "photo": "images/doctors/dra_jessyca.jpeg",
+      "description": "Com dedicação e paixão pela odontologia, oferece tratamentos odontológicos completos e personalizados para toda a família, aliando tecnologia de ponta a um atendimento humanizado e acolhedor. Acredita que um sorriso saudável é fundamental para o bem-estar e a autoestima; por isso, trabalha com foco na qualidade, utilizando materiais e técnicas modernas para garantir resultados duradouros e naturais.",
+      "bioExtended": "Missão: proporcionar cuidados odontológicos de excelência, promovendo saúde bucal e devolvendo sorrisos com confiança, carinho e profissionalismo.",
       "formacao": []
     },
     {
