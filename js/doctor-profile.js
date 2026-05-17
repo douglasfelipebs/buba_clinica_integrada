@@ -1,5 +1,5 @@
 /* ========================================
-   Buba Clínica Integrada - Perfil do médico (página única medico.html?id=)
+   Buba Clínica Integrada - Perfil do profissional (medico.html?id=)
    ======================================== */
 
 function escapeHtml(text) {
@@ -81,7 +81,7 @@ function renderDoctorProfile() {
             '<div class="container text-center">' +
             '<h1 class="section-title">Profissional não encontrado</h1>' +
             '<p style="margin: var(--spacing-md) 0; color: var(--color-text-secondary);">Verifique o link ou retorne à listagem da equipe.</p>' +
-            '<a href="medicos.html" class="btn btn-primary">Ver toda a equipe</a>' +
+            '<a href="profissionais.html" class="btn btn-primary">Ver toda a equipe</a>' +
             '</div></section>';
         return;
     }
@@ -119,7 +119,7 @@ function renderDoctorProfile() {
     root.innerHTML =
         '<nav class="doctor-profile__breadcrumb container" aria-label="Navegação">' +
         '<a href="index.html">Início</a> <span aria-hidden="true">/</span> ' +
-        '<a href="medicos.html">Médicos</a> <span aria-hidden="true">/</span> ' +
+        '<a href="profissionais.html">Profissionais</a> <span aria-hidden="true">/</span> ' +
         '<span class="doctor-profile__breadcrumb-current">' + escapeHtml(doctor.name) + '</span></nav>' +
 
         '<section class="section doctor-profile__hero">' +
@@ -136,7 +136,7 @@ function renderDoctorProfile() {
         '</div>' +
         '<div class="doctor-profile__actions">' +
         '<a href="' + agendarHref + '" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Agendar consulta</a>' +
-        '<a href="medicos.html" class="btn btn-outline">Voltar à equipe</a>' +
+        '<a href="profissionais.html" class="btn btn-outline">Voltar à equipe</a>' +
         '</div></div></div></section>' +
         formacao;
 }

@@ -1,8 +1,8 @@
 /* ========================================
-   Buba Clínica Integrada - JavaScript Médicos
+   Buba Clínica Integrada - JavaScript Profissionais
    ======================================== */
 
-// Dados dos médicos - editados diretamente neste arquivo
+// Dados da equipe - editados diretamente neste arquivo
 // Para atualizar, edite os dados abaixo na constante doctorsData
 const doctorsData = {
   "doctors": [
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ========================================
-// Carrega dados dos médicos (diretamente do objeto JavaScript)
+// Carrega dados dos profissionais (diretamente do objeto JavaScript)
 // ========================================
 function loadDoctors() {
     const container = document.getElementById('doctors-container');
@@ -131,17 +131,17 @@ function loadDoctors() {
         allDoctors = doctorsData.doctors;
         filteredDoctors = [...allDoctors];
         
-        console.log('Médicos carregados:', allDoctors.length);
+        console.log('Profissionais carregados:', allDoctors.length);
         
         renderDoctors(filteredDoctors);
     } catch (error) {
-        console.error('Erro ao carregar médicos:', error);
+        console.error('Erro ao carregar profissionais:', error);
         console.error('Detalhes do erro:', error.message);
         
         if (container) {
             container.innerHTML = `
                 <div class="loading" style="color: var(--color-text-light); padding: var(--spacing-xl); text-align: center;">
-                    <p style="margin-bottom: var(--spacing-sm);">Erro ao carregar informações dos médicos.</p>
+                    <p style="margin-bottom: var(--spacing-sm);">Erro ao carregar informações dos profissionais.</p>
                     <p style="font-size: var(--font-size-sm);">Por favor, verifique o console do navegador (F12) para mais detalhes.</p>
                 </div>
             `;
@@ -150,7 +150,7 @@ function loadDoctors() {
 }
 
 // ========================================
-// Renderiza os cards dos médicos
+// Renderiza os cards dos profissionais
 // ========================================
 function renderDoctors(doctors) {
     const container = document.getElementById('doctors-container');
@@ -161,11 +161,11 @@ function renderDoctors(doctors) {
     }
     
     if (!doctors || doctors.length === 0) {
-        container.innerHTML = '<div class="loading">Nenhum médico encontrado para esta categoria.</div>';
+        container.innerHTML = '<div class="loading">Nenhum profissional encontrado para esta categoria.</div>';
         return;
     }
     
-    console.log(`Renderizando ${doctors.length} médico(s)`);
+    console.log(`Renderizando ${doctors.length} profissional(is)`);
     
     container.innerHTML = doctors.map(doctor => {
         const photoHtml = doctor.photo
@@ -230,16 +230,16 @@ function setupFilters() {
             // Obtém o filtro selecionado
             const filter = this.getAttribute('data-filter');
             
-            // Filtra os médicos
+            // Filtra os profissionais
             if (filter === 'todos') {
                 filteredDoctors = [...allDoctors];
             } else {
                 filteredDoctors = allDoctors.filter(doctor => doctor.area === filter);
             }
             
-            console.log(`Filtro aplicado: ${filter}, Médicos encontrados: ${filteredDoctors.length}`);
+            console.log(`Filtro aplicado: ${filter}, Profissionais encontrados: ${filteredDoctors.length}`);
             
-            // Renderiza os médicos filtrados
+            // Renderiza os profissionais filtrados
             renderDoctors(filteredDoctors);
         });
     });

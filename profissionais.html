@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Avaliações e depoimentos de pacientes da Buba Clínica Integrada.">
-    <title>Avaliações - Buba Clínica Integrada</title>
+    <meta name="description" content="Conheça nossa equipe: médicos, dentistas e outros profissionais da Buba Clínica Integrada.">
+    <title>Profissionais — Buba Clínica Integrada</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="images/logo/logo.jpeg">
@@ -31,7 +31,7 @@
                     <ul class="nav-links">
                         <li><a href="index.html">Início</a></li>
                         <li><a href="sobre.html">Sobre</a></li>
-                        <li><a href="profissionais.html">Profissionais</a></li>
+                        <li><a href="profissionais.html" class="active">Profissionais</a></li>
                         <li><a href="servicos.html">Serviços</a></li>
                         <li><a href="contato.html">Contato</a></li>
                     </ul>
@@ -43,9 +43,9 @@
 
     <section class="hero" style="padding: var(--spacing-xl) 0;">
         <div class="container">
-            <h1 class="section-title" style="margin-bottom: 0;">Avaliações dos Pacientes</h1>
+            <h1 class="section-title" style="margin-bottom: 0;">Profissionais</h1>
             <p class="text-center" style="margin-top: var(--spacing-sm); font-size: var(--font-size-lg);">
-                O que nossos pacientes dizem sobre nós
+                Nossa equipe dedicada ao seu bem-estar
             </p>
         </div>
     </section>
@@ -53,28 +53,13 @@
     <section class="section">
         <div class="container">
             <div class="filters">
-                <button class="filter-btn review-filter-btn active" data-filter="todos">Todas</button>
-                <button class="filter-btn review-filter-btn" data-filter="medica">Área Médica</button>
-                <button class="filter-btn review-filter-btn" data-filter="odontologica">Área Odontológica</button>
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="medica">Área Médica</button>
+                <button class="filter-btn" data-filter="odontologica">Área Odontológica</button>
             </div>
 
-            <div id="reviews-container" class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="loading">Carregando avaliações...</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background-color: var(--color-bg-secondary);">
-        <div class="container">
-            <div class="text-center fade-in">
-                <h2>Foi atendido por nós?</h2>
-                <p style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-md); margin-top: var(--spacing-sm);">
-                    Compartilhe sua experiência e ajude outros pacientes
-                </p>
-                <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-md); justify-content: center; margin-top: var(--spacing-lg);">
-                    <a href="https://g.page/r/Cfx9dnA5SBDEEBM/review" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Avaliar no Google</a>
-                    <a href="https://wa.me/5547999300027?text=Olá,%20gostaria%20de%20mais%20informações" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Entre em Contato</a>
-                </div>
+            <div id="doctors-container" class="cards-grid doctors-grid">
+                <div class="loading">Carregando informações dos profissionais...</div>
             </div>
         </div>
     </section>
@@ -130,7 +115,6 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/reviews.js"></script>
+    <script src="js/doctors.js"></script>
 </body>
 </html>
-

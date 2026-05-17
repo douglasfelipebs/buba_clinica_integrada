@@ -305,6 +305,29 @@
     margin-top: var(--spacing-lg);
 }
 
+/* Especialidades (home / sobre): até 3 por linha e botão alinhado ao rodapé do card */
+.cards-grid--specialties {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+}
+
+.cards-grid--specialties > .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: left;
+}
+
+.cards-grid--specialties > .card .card-text {
+    flex: 1 1 auto;
+}
+
+.cards-grid--specialties > .card .btn {
+    margin-top: var(--spacing-md);
+    align-self: center;
+    flex-shrink: 0;
+}
+
 /* Doctor Card Específico */
 .doctor-card {
     text-align: center;
@@ -561,7 +584,7 @@
     background-color: var(--color-primary);
 }
 
-/* Página Médicos: no máximo 3 cards por linha, com mais respiro */
+/* Página Profissionais: no máximo 3 cards por linha, com mais respiro */
 #doctors-container.doctors-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--spacing-xl);

@@ -82,6 +82,10 @@
         gap: var(--spacing-sm);
     }
 
+    .cards-grid--specialties {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     #doctors-container.doctors-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--spacing-lg);
@@ -159,6 +163,10 @@
     .btn {
         width: 100%;
         padding: var(--spacing-sm);
+    }
+
+    .cards-grid--specialties {
+        grid-template-columns: 1fr;
     }
 
     .hero-cta {
