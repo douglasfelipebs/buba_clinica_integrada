@@ -179,6 +179,15 @@
     margin: 0 auto;
 }
 
+.hero-cta {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
 .hero h1 {
     font-size: var(--font-size-5xl);
     margin-bottom: var(--spacing-md);

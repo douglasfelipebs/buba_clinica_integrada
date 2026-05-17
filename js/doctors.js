@@ -61,6 +61,35 @@ const doctorsData = {
         "Residência em Cardiologia pelo Hospital Santa Casa de Curitiba/PR",
         "Título em Cardiologia pela Sociedade Brasileira de Cardiologia (SBC)"
       ]
+    },
+    {
+      "id": 5,
+      "name": "Dra. Ana Paula de Paula Correa",
+      "specialty": "Pediatria | Alergia | Imunologia",
+      "specialtyTags": ["Pediatria", "Alergia", "Imunologia", "Imunoterapia"],
+      "area": "medica",
+      "conselhoDeClasse": "CRM 41361/SC | RQE 30918",
+      "photo": "images/doctors/dra_ana.jpeg",
+      "description": "Pediatra com atuação nas áreas de alergia, imunologia e imunoterapia. Realiza atendimento pediátrico com puericultura e urgências, avaliação e tratamento de alergias; testes alérgicos (prick test e patch test); imunoterapia e laserterapia, com foco no cuidado integral de crianças e adolescentes.",
+      "bioExtended": null,
+      "formacao": [
+        "Pediatra com atuação nas áreas de alergia, imunologia e imunoterapia"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Laura Wolf",
+      "specialty": "Nutricionista | Terapeuta Integrativa",
+      "specialtyTags": ["Nutrição", "Terapia integrativa", "Ayurveda"],
+      "area": "medica",
+      "conselhoDeClasse": "CRN-10 4886 | CRTH BR 14849",
+      "tituloParaAgendamento": "a nutricionista",
+      "description": "Nutricionista e terapeuta integrativa com 12 anos de experiência em consultório, 9 anos em hospitais e clínicas multidisciplinares e 3 anos na indústria de suplementos. Dedica-se a guiar cada paciente em uma jornada de saúde, autoconhecimento e transformação. Seu objetivo é contribuir para que cada um descubra sua melhor versão, respeitando singularidades e promovendo mudanças que realmente façam sentido para a vida.",
+      "bioExtended": "Minha jornada começou com a visão de que a verdadeira nutrição vai além das refeições e dos nutrientes. Acredito que é uma prática de vida integral, onde corpo, mente e espírito caminham juntos. É por isso que me dedico a oferecer uma experiência única baseada nos princípios do Ayurveda — o conhecimento da vida —, explorando práticas milenares para promover saúde, longevidade e bem-estar.",
+      "formacao": [
+        "Nutricionista — CRN-10 4886",
+        "Terapeuta Integrativa — CRTH BR 14849"
+      ]
     }
   ]
 };

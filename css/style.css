@@ -179,6 +179,16 @@ a:hover {
     background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
 }
 
+/* Títulos de área na página Serviços: à esquerda no desktop, centralizados no mobile */
+.services-area-heading {
+    text-align: left;
+}
+
+.services-area-heading.section-title::after {
+    left: 0;
+    transform: none;
+}
+
 /* ========================================
    Utilitários
    ======================================== */

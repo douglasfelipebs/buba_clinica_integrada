@@ -33,7 +33,6 @@
                         <li><a href="sobre.html">Sobre</a></li>
                         <li><a href="medicos.html">Médicos</a></li>
                         <li><a href="servicos.html" class="active">Serviços</a></li>
-                        <li><a href="planos.html">Planos</a></li>
                     </ul>
                     <button class="menu-toggle" aria-label="Menu">☰</button>
                 </nav>
@@ -139,8 +138,57 @@
               "id": 3,
               "name": "Saúde Capilar",
               "area": "medica",
-              "description": "Tratamentos especializados para problemas capilares, queda de cabelo e saúde do couro cabeludo.",
+              "description": "Tricologia clínica: avaliação e tratamento para queda de cabelo e saúde do couro cabeludo.",
               "icon": "hair"
+            },
+            {
+              "id": 11,
+              "name": "Emagrecimento e composição corporal",
+              "area": "medica",
+              "description": "Acompanhamento médico focado em perda de peso saudável, metabolismo e manutenção de resultados duradouros.",
+              "icon": "weight"
+            },
+            {
+              "id": 12,
+              "name": "Longevidade e qualidade de vida",
+              "area": "medica",
+              "description": "Cuidados voltados ao envelhecimento saudável, vitalidade e prevenção ligada ao bem-estar global.",
+              "icon": "longevity"
+            },
+            {
+              "id": 13,
+              "name": "Equilíbrio hormonal",
+              "area": "medica",
+              "description": "Investigação e manejo de desequilíbrios hormonais com avaliação personalizada e acompanhamento clínico.",
+              "icon": "hormonal"
+            },
+            {
+              "id": 14,
+              "name": "Cardiologia",
+              "area": "medica",
+              "description": "Prevenção e tratamento das doenças cardiovasculares — hipertensão, dislipidemias (colesterol), insuficiência cardíaca, coronariopatias e arritmias.",
+              "icon": "cardiology"
+            },
+            {
+              "id": 15,
+              "name": "Pediatria, alergia e imunologia",
+              "area": "medica",
+              "description": "Atendimento infantil com puericultura e urgências; alergias; testes cutâneos (prick e patch); imunoterapia e laserterapia com foco no cuidado integral da criança e do adolescente.",
+              "icon": "pediatrics"
+            },
+            {
+              "id": 16,
+              "name": "Nutrição clínica",
+              "area": "medica",
+              "description": "Consultoria nutricional personalizada para alimentação, metas de saúde e acompanhamento com nutricionista habilitado.",
+              "icon": "nutrition"
+            },
+            {
+              "id": 17,
+              "name": "Ayurveda e terapias complementares",
+              "area": "medica",
+              "description": "Práticas inspiradas na medicina Ayurveda e suporte ao bem-estar integral, junto ao cuidado nutricional e ao estilo de vida.",
+              "icon": "ayurveda"
             },
             {
               "id": 4,
@@ -176,6 +224,20 @@
               "area": "odontologica",
               "description": "Profilaxia dental profissional e orientações para manutenção da saúde bucal.",
               "icon": "cleaning"
+            },
+            {
+              "id": 9,
+              "name": "Tratamento de cáries",
+              "area": "odontologica",
+              "description": "Restauração de dentes lesionados por cárie com materiais estéticos e técnicas minimamente invasivas.",
+              "icon": "cavity"
+            },
+            {
+              "id": 10,
+              "name": "Ortodontia",
+              "area": "odontologica",
+              "description": "Correção do alinhamento dos dentes e da mordida com aparelhos e planejamento individualizado.",
+              "icon": "orthodontics"
             },
           ]
         };
@@ -216,10 +278,10 @@
                 
                 let html = '';
                 
-                ['medica', 'odontologica'].forEach(area => {
+                ['odontologica', 'medica'].forEach(area => {
                     if (grouped[area].length > 0) {
                         html += `<div class="fade-in" style="margin-bottom: var(--spacing-xl);">`;
-                        html += `<h2 class="section-title" style="text-align: left; margin-bottom: var(--spacing-md);">${areaNames[area]}</h2>`;
+                        html += `<h2 class="section-title services-area-heading" style="margin-bottom: var(--spacing-md);">${areaNames[area]}</h2>`;
                         
                         if (areaPhotos[area].length > 0) {
                             html += `<div class="facility-gallery">`;

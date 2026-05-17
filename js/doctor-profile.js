@@ -35,12 +35,18 @@ var CLINIC_WHATSAPP_NUMBER = '5547999300027';
 
 function buildAgendarConsultaWhatsappUrl(doctor) {
     var name = (doctor.name || '').trim();
-    var isDra = /^Dra\.?\s/i.test(name);
+    var tituloAgenda = doctor.tituloParaAgendamento && String(doctor.tituloParaAgendamento).trim();
     /* Dra. antes de Dr.: senão "Dr" casa no início de "Dra." e sobra "a. Beatriz…" */
     var bare = name.replace(/^(Dra\.?|Dr\.?)\s*/i, '').trim() || name;
-    var msg = isDra
-        ? 'Olá, gostaria de agendar uma consulta com a doutora ' + bare + '.'
-        : 'Olá, gostaria de agendar uma consulta com o doutor ' + bare + '.';
+    var msg;
+    if (tituloAgenda) {
+        msg = 'Olá, gostaria de agendar uma consulta com ' + tituloAgenda + ' ' + bare + '.';
+    } else {
+        var isDra = /^Dra\.?\s/i.test(name);
+        msg = isDra
+            ? 'Olá, gostaria de agendar uma consulta com a doutora ' + bare + '.'
+            : 'Olá, gostaria de agendar uma consulta com o doutor ' + bare + '.';
+    }
     return 'https://wa.me/' + CLINIC_WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg);
 }
 
