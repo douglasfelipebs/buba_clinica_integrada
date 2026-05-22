@@ -14,6 +14,7 @@ const doctorsData = {
       "area": "odontologica",
       "conselhoDeClasse": "CRO-SC 25167",
       "photo": "images/doctors/dr_lucas.jpeg",
+      "atendimentoTags": ["Presencial"],
       "description": "Cirurgião-dentista formado pela PUCPR, atua em clínica geral com foco em qualidade, segurança e atendimento humanizado. Natural de Itaiópolis, retorna à cidade com o compromisso de oferecer uma experiência odontológica diferenciada, aliando cuidado individualizado à constante atualização por meio de sua especialização em Prótese Dentária. Seu objetivo é proporcionar tratamentos eficazes, confortáveis e alinhados às necessidades de cada paciente.",
       "bioExtended": null,
       "formacao": [
@@ -29,6 +30,7 @@ const doctorsData = {
       "area": "medica",
       "conselhoDeClasse": "CRM 37995/SC",
       "photo": "images/doctors/dra_beatriz.jpeg",
+      "atendimentoTags": ["Presencial", "Online"],
       "description": "Médica dedicada ao cuidado integral da saúde, com atuação em saúde capilar, medicina funcional integrativa, emagrecimento, longevidade e reposição hormonal. Seu trabalho é focado em identificar e tratar as causas dos desequilíbrios do organismo, promovendo bem-estar, qualidade de vida e resultados duradouros. Através de uma abordagem personalizada, busca auxiliar cada paciente a alcançar sua melhor versão de forma equilibrada e sustentável.",
       "bioExtended": null,
       "formacao": []
@@ -41,6 +43,7 @@ const doctorsData = {
       "area": "odontologica",
       "conselhoDeClasse": "CRO-PR 28861",
       "photo": "images/doctors/dra_jessyca.jpeg",
+      "atendimentoTags": ["Presencial"],
       "description": "Com dedicação e paixão pela odontologia, oferece tratamentos odontológicos completos e personalizados para toda a família, aliando tecnologia de ponta a um atendimento humanizado e acolhedor. Acredita que um sorriso saudável é fundamental para o bem-estar e a autoestima; por isso, trabalha com foco na qualidade, utilizando materiais e técnicas modernas para garantir resultados duradouros e naturais.",
       "bioExtended": "Missão: proporcionar cuidados odontológicos de excelência, promovendo saúde bucal e devolvendo sorrisos com confiança, carinho e profissionalismo.",
       "formacao": []
@@ -53,6 +56,7 @@ const doctorsData = {
       "area": "medica",
       "conselhoDeClasse": "CRM 25104 | RQE 23036",
       "photo": "images/doctors/dra_eduarda.jpeg",
+      "atendimentoTags": ["Presencial"],
       "description": "Médica especialista em Cardiologia, com formação sólida e atuação focada na prevenção, diagnóstico e tratamento das doenças cardiovasculares. Realiza acompanhamento completo com abordagem individualizada e baseada em evidências, auxiliando seus pacientes no controle de condições como hipertensão, dislipidemias, insuficiência cardíaca, doença coronariana e arritmias. Seu objetivo é promover saúde, qualidade de vida e segurança em cada etapa do cuidado.",
       "bioExtended": null,
       "formacao": [
@@ -70,6 +74,7 @@ const doctorsData = {
       "area": "medica",
       "conselhoDeClasse": "CRM 41361/SC | RQE 30918",
       "photo": "images/doctors/dra_ana.jpeg",
+      "atendimentoTags": ["Presencial"],
       "description": "Pediatra com atuação nas áreas de alergia, imunologia e imunoterapia. Realiza atendimento pediátrico com puericultura e urgências, avaliação e tratamento de alergias; testes alérgicos (prick test e patch test); imunoterapia e laserterapia, com foco no cuidado integral de crianças e adolescentes.",
       "bioExtended": null,
       "formacao": [
@@ -83,7 +88,9 @@ const doctorsData = {
       "specialtyTags": ["Nutrição", "Terapia integrativa", "Ayurveda"],
       "area": "medica",
       "conselhoDeClasse": "CRN-10 4886 | CRTH BR 14849",
+      "photo": "images/doctors/dra_laura.jpeg",
       "tituloParaAgendamento": "a nutricionista",
+      "atendimentoTags": ["Presencial"],
       "description": "Nutricionista e terapeuta integrativa com 12 anos de experiência em consultório, 9 anos em hospitais e clínicas multidisciplinares e 3 anos na indústria de suplementos. Dedica-se a guiar cada paciente em uma jornada de saúde, autoconhecimento e transformação. Seu objetivo é contribuir para que cada um descubra sua melhor versão, respeitando singularidades e promovendo mudanças que realmente façam sentido para a vida.",
       "bioExtended": "Minha jornada começou com a visão de que a verdadeira nutrição vai além das refeições e dos nutrientes. Acredito que é uma prática de vida integral, onde corpo, mente e espírito caminham juntos. É por isso que me dedico a oferecer uma experiência única baseada nos princípios do Ayurveda — o conhecimento da vida —, explorando práticas milenares para promover saúde, longevidade e bem-estar.",
       "formacao": [
@@ -168,6 +175,12 @@ function renderDoctors(doctors) {
     console.log(`Renderizando ${doctors.length} profissional(is)`);
     
     container.innerHTML = doctors.map(doctor => {
+        const atLabels = doctor.atendimentoTags && Array.isArray(doctor.atendimentoTags) && doctor.atendimentoTags.length
+            ? doctor.atendimentoTags.filter(Boolean)
+            : [];
+        const atendimentoHtml = atLabels.length
+            ? `<p class="doctor-card__atendimento" aria-label="Atendimento: ${atLabels.join(', ')}">${atLabels.map(tag => `<span>${String(tag)}</span>`).join('<span class="doctor-card__atendimento-sep" aria-hidden="true">·</span>')}</p>`
+            : '';
         const photoHtml = doctor.photo
             ? `<img src="${doctor.photo}" 
                  alt="${doctor.name}" 
@@ -181,10 +194,11 @@ function renderDoctors(doctors) {
                 <h3 class="doctor-name">${doctor.name}</h3>
                 <p class="doctor-specialty">${doctor.specialty}</p>
                 <p class="doctor-council">${doctor.conselhoDeClasse}</p>
+                ${atendimentoHtml}
                 <p class="card-text">${doctor.description}</p>
-                <p class="doctor-card__profile-wrap">
+                <div class="doctor-card__profile-wrap">
                     <a href="medico.html?id=${doctor.id}" class="doctor-card__profile-link">Ver perfil completo</a>
-                </p>
+                </div>
             </div>
         </div>
     `;

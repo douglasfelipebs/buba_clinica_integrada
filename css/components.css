@@ -381,8 +381,27 @@
     margin-bottom: var(--spacing-sm);
 }
 
+.doctor-card .doctor-council:has(+ .doctor-card__atendimento) {
+    margin-bottom: var(--spacing-xs);
+}
+
+.doctor-card__atendimento {
+    margin: 0 0 var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-light);
+    font-weight: 500;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.doctor-card__atendimento-sep {
+    margin: 0 0.2em;
+    opacity: 0.75;
+    user-select: none;
+}
+
 .doctor-card__profile-wrap {
-    margin-top: var(--spacing-md);
+    margin-top: 0;
     margin-bottom: 0;
 }
 
@@ -503,11 +522,29 @@
     margin-bottom: var(--spacing-md);
 }
 
+.doctor-profile__council:has(+ .doctor-profile__atendimento) {
+    margin-bottom: var(--spacing-xs);
+}
+
+.doctor-profile__atendimento {
+    margin: 0 0 var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-light);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.doctor-profile__atendimento-sep {
+    margin: 0 0.2em;
+    opacity: 0.75;
+    user-select: none;
+}
+
 .doctor-profile__tags {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-xs);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
 }
 
 .doctor-profile__tag {
@@ -588,6 +625,30 @@
 #doctors-container.doctors-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--spacing-xl);
+    align-items: stretch;
+}
+
+#doctors-container.doctors-grid > .card.doctor-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#doctors-container.doctors-grid .doctor-card > .card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+#doctors-container.doctors-grid .doctor-card .card-text {
+    flex: 1 1 auto;
+}
+
+#doctors-container.doctors-grid .doctor-card__profile-wrap {
+    margin-top: auto;
+    padding-top: var(--spacing-md);
+    flex-shrink: 0;
 }
 
 /* Footer */

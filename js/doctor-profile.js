@@ -114,6 +114,17 @@ function renderDoctorProfile() {
         ? '<p class="doctor-profile__bio-p">' + escapeHtml(doctor.bioExtended) + '</p>'
         : '';
 
+    var atendimentoProfileHtml = '';
+    if (doctor.atendimentoTags && doctor.atendimentoTags.length) {
+        var atLabels = doctor.atendimentoTags.filter(Boolean);
+        var atAria = 'Atendimento: ' + atLabels.join(', ');
+        var atBody = atLabels.map(function (t) {
+            return '<span>' + escapeHtml(String(t)) + '</span>';
+        }).join('<span class="doctor-profile__atendimento-sep" aria-hidden="true">·</span>');
+        atendimentoProfileHtml =
+            '<p class="doctor-profile__atendimento" aria-label="' + escapeAttr(atAria) + '">' + atBody + '</p>';
+    }
+
     var agendarHref = escapeAttr(buildAgendarConsultaWhatsappUrl(doctor));
 
     root.innerHTML =
@@ -128,8 +139,9 @@ function renderDoctorProfile() {
         '<div class="doctor-profile__main">' +
         '<p class="doctor-profile__area">' + escapeHtml(getAreaLabel(doctor.area)) + '</p>' +
         '<h1 class="doctor-profile__name">' + escapeHtml(doctor.name) + '</h1>' +
-        '<p class="doctor-profile__council">' + escapeHtml(doctor.conselhoDeClasse) + '</p>' +
         (tagsHtml ? '<div class="doctor-profile__tags">' + tagsHtml + '</div>' : '') +
+        '<p class="doctor-profile__council">' + escapeHtml(doctor.conselhoDeClasse) + '</p>' +
+        atendimentoProfileHtml +
         '<div class="doctor-profile__bio">' +
         '<p class="doctor-profile__bio-p">' + escapeHtml(doctor.description) + '</p>' +
         bioExtra +
