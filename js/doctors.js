@@ -39,7 +39,7 @@ const doctorsData = {
       "id": 3,
       "name": "Dra. Jessyca Buba",
       "specialty": "Bucomaxilofacial | Implantes | Próteses",
-      "specialtyTags": ["Bucomaxilofacial", "Implantodontia", "Estética dental", "Ortodontia", "Prótese dentária", "DTM e HOF"],
+      "specialtyTags": ["Bucomaxilofacial", "Implantodontia", "Estética dental", "Prótese dentária", "DTM e HOF"],
       "area": "odontologica",
       "conselhoDeClasse": "CRO-PR 28861",
       "photo": "images/doctors/dra_jessyca.jpeg",
